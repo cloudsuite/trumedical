@@ -1,0 +1,158 @@
+!--  —————————————————————————————————————————————————————————————————————
+			Controller: Home
+			Action:     index				
+			——————————————————————————————————————————————————————————————————————
+
+		  Doc:	home page alternative 1: migrated from sites/trumedical/wpp_index.html
+				 
+					
+			Known Bugs/fixes 
+			  page-specific css:
+					1. refactor this; stuff that applies to all pages, move into tm1_base.css
+				header:
+					1. Tru Medical logo: take from Mandy's png
+					2. make logomark clickable: returns user to home page
+					3. Complete header on the right: move SHOP NOW button up here
+				footer
+					1. 
+
+-->
+
+<!-- header includes  ————————————————————————————————————————————————————  -->
+
+<%= content_for(:page_title) do %>
+	<title>Tru Medical</title>
+<% end %>
+
+<%= content_for(:controller_specific_css_files) do %>
+	<%= stylesheet_link_tag "" %>
+
+<% end %>
+
+<%= content_for(:controller_specific_js_files) do %>
+	<%= javascript_include_tag "" %>
+<% end %>
+
+<%= content_for(:controller_specific_jQuery_document_ready ) do %>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			
+
+			$("button", "#newsletter").button();
+
+			$("area").click(function(){
+				alert("Alert: Page not implemented in prototype.");
+				});
+		});	
+	</script>
+	
+<% end %> 
+
+
+<%= content_for(:page_specific_style_declarations) do %> 
+
+	<style type="text/css">	
+		 *{
+          margin:0;
+          padding:0;
+      }
+      body{
+          font-family:Arial;
+          padding-top:80px;
+          background_color: white;
+      }
+      a.back{
+          background-color:#CCCCFF;
+          position:absolute;
+          width:150px;
+          height:27px;
+          outline:none;
+          top:2px;
+          right:0px;
+      }
+      .reference{
+          margin:20px auto;
+          width:600px;
+          padding:20px;
+      }
+      .reference p a{
+          text-transform:uppercase;
+          text-shadow:1px 1px 1px #fff;
+          color:#666;
+          text-decoration:none;
+          font-size:10px;
+
+      }
+      .reference p a:hover{
+          color:#333;
+      }
+					#header {position:relative; margin-bottom:20px; margin-left:80px;}
+					#logoMark { position:absolute; top:00px; left:0px;}
+					#logoMark p { color:black; font-size:64px; font:Impact; font-weight:bold; }
+
+					div#buyNow{
+						min-height:100px;
+						width:120px;
+						background-color: magenta;
+						color:white;
+						font-size:24px;
+						margin-left:650px;
+						}
+						#buyNow p {font-size:24px; color:white; padding: 30px 10px 30px 30px }
+					button#shopNow {
+						min-height:100px;
+						background-url:none!important;
+						background-color:orange!important;
+						width: 120px!important;
+						margin-left: 650px;
+						font-size:24px!important;
+						color:white!important;
+						}
+					div#banner { position: relative;
+						min-height:100px;
+						margin-right:20px;
+						width:890px;
+						margin-bottom:40px;
+						background: -moz-linear-gradient(left, #FFFFFF 25%, #D8DFE6 100%); /* firefox */
+						background: -webkit-gradient(linear, left top, right top, color-stop(25%,#FFFFFF), color-stop(100%,#D8DFE6)); /* safari */
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#D8DFE6',GradientType=1 ); /* ie */
+					}
+	
+	</style>
+	
+	<style type="text/css">
+		/* ------- within header --------------—————------------- */
+		
+		
+		
+		/* ------- within middleband: shop now here?  --------------------------- */
+		
+	
+
+		/* -----   within center -------------------------- */
+
+
+		
+
+	</style>
+	
+<% end %>	
+
+  
+   
+<!-- #middleBand   ———————————————————————————————————————————————————————————————— -->
+   
+<%= content_for(:middleBand) do %> 
+
+	<!-- main widget   ——————————————————————————————————————————————————————————————————— -->
+
+
+	
+	<!-- center  ———————————————————————————————————————————————————————————— -->
+
+	
+
+<% end %>
+

@@ -1,0 +1,2 @@
+class ProductsTlcController < ApplicationController
+end

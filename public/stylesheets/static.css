@@ -1,0 +1,52 @@
+@charset "UTF-8";
+			/* CSS Document */
+					
+			/* ————— page layout: major divs —————————————————————————————————— */	
+   			 
+            body {}
+				#wrapper_outer {}
+				#wrapper_inner {}
+            #header {}
+				#main {
+					background: -moz-linear-gradient(left, #FFFFFF 45%, #D8DFE6 100%); /* firefox */
+					background: -webkit-gradient(linear, left top, right top, color-stop(45%,#FFFFFF), color-stop(100%,#D8DFE6) ); /* for safari */
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#D8DFE6', GradientType=1 ); /* for ie */ 
+					}
+					#bannerImage { 
+						height:238px;
+						width:100%;
+						}
+					#leftCenterRight{ position: relative;
+						min-height:304px; /* 542-238 px bannerImage */
+						width:720px; /* 797-2(20) */
+						padding:40px;  
+						float:left;
+						background-color:transparent; /* so gradient on #main will show through */
+					}
+					
+            #promo {}
+            #footer {}
+
+			/* ———— within leftNav  ——————————————————————————————————————— */	
+				
+			/* ———— within header  ———————————————————————————————————————— */
+					
+			/* ———— within 'main'  ———————————————————————————————————————— */
+			
+				/* within 'leftCenterRight' ————————————————————————————————— */
+
+					#leftCenterRight h1 {font-size:24px; color:#dd4b00;  margin-bottom:10px;}		
+					#leftCenterRight h2 { font-size:16px; color:black; font-weight:bold; margin-top:20px; margin-bottom:10px;}
+					#leftCenterRight h3 { font-size:12px;font-weight:bold; color:black; margin-top:16px; margin-bottom:10px;}
+					#leftCenterRight ol {margin-top:10px;}
+					#leftCenterRight ol li {margin-left:20px; margin-top:5px; font-size:12px; color:#666; }
+					#leftCenterRight ul {margin-top:10px; margin-bottom:10px;}
+					#leftCenterRight ul li {margin-left:20px; margin-top:5px; font-size:12px; color:#666;  }
+				
+					
+			/* ———— within 'promo'  —————————————————————————————————————————————————————————————————— */
+			
+				
+			
+			/* ————  within footer———————————————————————————————————————————*/			
+			

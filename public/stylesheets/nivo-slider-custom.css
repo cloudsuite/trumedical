@@ -1,0 +1,73 @@
+/*
+ * Note: Include the nivo-slider.css file that comes
+ * with the main download before including this file.
+ */
+
+
+#slider {
+	position:relative;
+    width:960px !important;
+    height:315px !important; /* was 218 */
+	margin:10px 20px 20px 0px;
+	background:#202834 url("../images/nivoSlider/loading.gif") no-repeat 50% 50%;
+    /*
+	-moz-box-shadow:0px 0px 10px #333;
+	-webkit-box-shadow:0px 0px 10px #333;
+	box-shadow:0px 0px 10px #333;
+    */
+}
+#slider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+#slider a {
+	border:0;
+}
+
+
+
+.nivo-controlNav {
+	position:absolute;
+	left:47%;
+	bottom:-30px;
+}
+.nivo-controlNav a {
+	display:block;
+	width:20px; /* TMA: 10 px for small buttons */
+	height:20px; /* TMA 10px */
+	background:url("../images/nivoSlider/bullets_big.png") no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin-right:3px;
+	float:left;
+}
+.nivo-controlNav a.active {
+	background-position:-20px 0; /* 10 pix for small buttons */
+}
+
+.nivo-directionNav a {
+	display:block;
+	width:32px;
+	height:34px;
+	background:url("../images/nivoSlider/arrows.png") no-repeat;
+	text-indent:-9999px;
+	border:0;
+}
+a.nivo-nextNav {
+	background-position:-32px 0;
+	right:20px; /* TMA 10 px */
+}
+a.nivo-prevNav {
+	left:20px; /* TMA 10px = small buttons */
+}
+
+/* DEBUG: in an effort to move slider images below results of google site search (z-index:999) . Failing */
+
+
+.nivoSlider a.nivo-imageLink {z-index:1;} 	/* TMA; originally 60 */
+.nivoslice {z-index:0;} 					/* TMA; originally 50 */
+.nivo-caption {z-index:3;}					/* TMA; originally 89 */
+.nivo-directionNav a { z-index:4;}			/* TMA; originally 99 */
+.nivo-controlNav a {z-index:4;}				/* TMA; originally 99 */

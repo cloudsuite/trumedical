@@ -1,0 +1,108 @@
+@charset "UTF-8";
+			/* CSS Document */
+					
+			/* ————— page layout: major divs —————————————————————————————————— */	
+   			 
+            body {}
+				#wrapper_outer {}
+				#wrapper_inner {}
+            #header {}
+				#main { position:relative;
+					/* background: #EBEBEB; /* old browsers */
+					background: -moz-linear-gradient(left, #EBEBEB 0%, #FFFFFF 100%); /* firefox */
+					background: -webkit-gradient(linear, left top, right top, color-stop(0%,#EBEBEB), color-stop(75%,#FFFFFF)); /* webkit */
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EBEBEB', endColorstr='#FFFFFF',GradientType=1 ); /* ie */
+					}	
+					#left { position: relative;
+						min-height:542px;
+						width:225px;	/* rather than 265px with no padding */
+						padding:20px;
+						float:left;
+						background-color:transparent; /* so gradient on #main will show through */
+						z-index:11; /* to place it above grid in #bottom */
+					}
+					#center { position: relative;
+						min-height:542px;
+						width:265px;
+						float:left;
+						background-color:transparent; /* so gradient on #main will show through */
+						z-index:11;
+					}
+					#right { position: relative;
+						min-height:542px;
+						width:265px;
+						float:left;
+						background-color:transparent; /* so gradient on #main will show through */
+						z-index:11;
+					}
+				#bottom {position:absolute; /* within respect to #main */
+					bottom:0; left:0;
+					min-height:256px;
+					width:100%;
+					background-image: url("../images/collection_page/item_grid.png");
+					background-repeat: repeat-x;
+					z-index:10;
+					}
+					
+            #promo {}
+            #footer {}
+
+			/* ———— within leftNav  ——————————————————————————————————————— */	
+				
+			/* ———— within header  ———————————————————————————————————————— */
+					
+			/* ———— within 'main'  ———————————————————————————————————————— */
+				
+				/* ———— within 'main/left'  ————————————————————————————— */
+
+					#left h1 {font-size:24px; line-height: 32px; color:#dd4b00; padding-left:0px; margin-bottom:10px;
+						/*  CR 4/12: remove gradient;
+						background: -moz-linear-gradient(left, #FFFFFF 0%, #EBEBEB 100%); 
+						background: -webkit-gradient(linear, left top, right top, color-stop(0%,#FFFFFF), color-stop(75%,#CCCCCC)); 
+						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#EBEBEB',GradientType=1 ); 
+						*/
+					}
+					#left h2 {font-size:18px; line-height: 24px; color:#EBEBEB; width:170px; padding-left:8px;
+						  background-color:black;}
+					#left hr {color:black; margin-top:-2px;}
+					
+					#description {font-size:11px; line-height:15px; color:#EBEBEB; }
+					#price { } 
+					button { background-color:#dd4b00!important; color:white!important;border:none!important;}
+					
+					
+					#alternateImages {padding-top:20px; }
+					#alternateImages h2 { font-size:12px; text-transform:uppercase; background:gray; }
+					#features h2 { font-size:12px; text-transform:uppercase; background:gray; }
+
+					#features {padding-top:20px; }
+					#features ul{ list-style-type:disk; list-style-position:outside; margin-top:10px; padding-bottom:20px;}
+					#features li{ margin-left:15px;font-size:11px; line-height:16px; color:#666;}
+					
+					#footnotes p{ font-size:9px;font-style:italic;}
+            
+            /* ———— within 'main/center'  ——————————————————————————— */
+					#center {
+						padding-top:60px; /* align with top row of text in #left and with swatches in #right */
+						padding-left:10px; /* a little more room on left than right */
+						width:255px;
+						
+					}
+					#center img { float:left; }  
+            
+            /* ———— within 'main/right'  ———————————————————————————— */
+				
+					#right img { padding-bottom:3px;}
+					#right { 
+							width:245px!important; 
+							padding-right:20px;
+							padding-top:60px; /* align with top row of text in #left */
+							
+							}
+            		
+			/* ———— within 'promo'  —————————————————————————————————————————————————————————————————— */
+			
+				
+			
+			/* ————  within footer———————————————————————————————————————————*/			
+			

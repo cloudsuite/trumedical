@@ -1,0 +1,123 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* ----------  area containing large image and controls  -------- */
+div.content {	
+	display: block;	/* float: right if want thumnails up on the left */
+	width: 230px; 	/* set to width of large images + border if want navigation above image to line up */	
+					/* height determined by height of large images in div.slideshow 
+					/* If they are not all the same height, may want to set height here */	
+										
+	background-color: pink;
+	top-margin: 10px; /* why doesn't this work here? had to put it on div.controls */
+}
+div.content a, div.navigation a {	/* normal (unhover) state of navigation */
+	text-decoration: none;
+	color: #777;	/* dark grey */
+}
+div.content  a:focus, div.content  a:hover, div.content  a:active {
+	font-weight:bold;				/* if hover over a nav anchor, highlight anchor */
+}
+div.controls { 
+	margin-top: 10px; /* pushes div.controls AND containing div.content down. Why? */
+	height: 23px;	/* HOW PUSH CONTROLS DOWN CLOSER TO TOP OF IMAGE? */
+}
+div.controls a {
+	padding: 5px;	/* ???  */
+	background-color:#CC99FF;	/* TEST: to see the anchors within div.controls */
+								/* Why do they extend above their containing div? */
+}
+div.ss-controls {	/* click once to turn on autoplay of images; again to turn it off */
+	float: left;	/* within what div? div.content? div.controls? */
+					/* This div is dynamically added by the javascript if the 'render_ss_controls' */
+					/* option is set. */
+					/* it does not appear in the nested set of divs declared within html page */
+}
+div.nav-controls {	/* click to step one image forward, or one back */
+	float: right; 	/* within what div? div.content? div.controls? div.content */
+}
+
+div.loader {		/* spinning wheel if images take a long time to load 	*/
+	background-image: url('loader.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 225px;
+	/*height: 300px;	/* will this work without height if letting height of container resize to big image? */
+}
+div.slideshow {
+	clear: both; 	/* force div.slideshow below navigation; not needed in most layouts */ 
+}
+div.slideshow span.image-wrapper {
+	float: left;			/* float left within div#content  */
+	padding-bottom: 4px;	/* extends div.container below contained image, pushing 
+							   caption block down a bit from large image 
+							   I can't seem to go below about 12px. Why? */
+}
+div.slideshow a.advance-link {
+	padding: 2px;			/* padding around large images */
+	/* display: block — without this neither padding nor border appears.  Why? */
+	/* If reinsert here, then remove border and padding from div.slideshow img */
+	border: 1px solid #CCC;	/* grey border around large images */
+}
+	
+div.slideshow img {
+	border: none;	/* 'none' in original; used div.slideshow a.advance-link instead */
+	padding:0px;				/* adds transparent padding between image and boarder */
+	display: block;				/* pushes it left and cleans up padding & border around image-wrapper. Why? */
+}
+div.download {					
+	float: left;				/* float to match div.slideshow? */
+}
+div.embox {						/* Class applied to div#captions. Contains caption for large image */
+	clear: both;
+	border: 1px solid #ccc;		/* make sure width matches that of large image+borders on large image */
+	background-color: #eee;		/* pale grey */
+	padding: 10px;				/* put padding around text in caption box */
+}
+div.image-title {				/* Where is this used; setting to purple can't see it */
+	font-weight: bold;
+	font-size: 1.4em;
+}
+
+div.image-desc {				/* ??? */
+	line-height: 1.3em;
+	padding-top: 12px;
+}
+/* ----------  area containing thumbnnail images used for navigation -------- */
+div.navigation {
+	width: 245px;	
+	float: left;		/* thumbnails floated left within this div */
+}
+/* ----------  layout for thumbnails (in an list ) ------------------------- */
+ul.thumbs {
+	clear: both;
+	margin: 0;
+	padding: 0;
+}
+ul.thumbs li {
+	float: left;
+	padding: 0;
+	margin: 5px 5px 0px 0;	/* TMA: 48+2=50 50x4= 200 225-200=25, so 5px right margin between thumbs is OK */
+	list-style: none;
+}
+/* ----------  highlighting of thumbnails when selected  ------------------- */
+a.thumb {						/* normal border etc for thumbnails */
+	padding: 2px;
+	display: block;
+	border: 1px solid #ffffff;	/* white makes it invisible but it uses space so thumbnail doesn't jump which highlight it */
+	width:48px;		/* TMA added — forces a area to be large enough to contain the image*/
+	height:48px;	/* TMA added  */
+}
+ul.thumbs li.selected a.thumb {	/* when selected, turn boarder red */
+	padding: 2px;
+	border: 1px solid #dd4b00; /* Buff dark orange */
+}
+a.thumb:focus {
+	outline: none;
+}
+ul.thumbs img {					/* ??? */
+	border: none;
+	/* display: block; */
+	width:48px;		/* TMA added 10.11 -- why coming out 95? */
+	height:48px;	/* TMA added 10.11 */
+}		

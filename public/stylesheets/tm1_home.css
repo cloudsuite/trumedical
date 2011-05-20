@@ -1,0 +1,196 @@
+@charset "UTF-8";
+			/* CSS Document */
+
+			 /* ———— reset css styles all browsers   ————— */
+            html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+				margin:0;
+				padding:0;
+				border:0;
+				font-weight:inherit;
+				font-style:inherit;
+				font-size:100%;
+				font-family:inherit;
+				vertical-align:top;
+			}
+        
+			* { padding:0px; margin:0px; }
+			
+			body {
+	
+				background-color:whitesmoke;
+                font-family: Arial, Helvetica, sans-serif; /* surprice: IS affecting text in header, etc. */
+				font-size: 11px; /* TODO: remove redundant declarations from contained divs */
+				color: #6d6d6d; /* TODO remove redundant declarations from contained divs */
+                }
+				
+	        #wrapper {
+                width:620px;	
+				height:1000px; /* Don't think I need this; let it expand vertically with contained divs */
+                margin:0;
+                margin-left: auto; margin-right: auto;
+                z-index:2;
+				background-color:66CCCC; /* DEBUG: #66CCCC: this was the teal I wanted to remove */
+                }
+            #header{ position:relative; /* establish coordinate frame for contained divs */
+                width:100%;
+                background-color:pink; 
+				min-height:160px;	/* otherwise collapses to height of non-abasolutely positioned content */	
+                z-index:3;
+                }
+				#headerLeft{position:absolute; /* relative to containing div #header */
+					top:20px;
+					left:20px;
+					width:120px;
+					height:120px;
+					}
+					div#headerLeft img {position:absolute; top:0; left:0;}
+					
+				#headerRight{position:absolute; /* relative to containing div #header */
+					top:0px;
+					right:0px;
+					min-width:320px;
+					neight:80px;
+					padding-right:10px;
+					z-index:11;
+					}
+					div#headerRight .headerExplore {font-size:12px; color:#AAAAAA; }
+					div#headerRight .headerBag {font-size:12px; color:#AAAAAA;}
+					div#headerRight .headerBagItemCount {font-size:11px; color:#AAAAAA; text-align:left;}
+					
+					div#headerRight .headerAccount, .headerService {}
+					div#headerRight .headerAccount a {text-decoration:none; font-size:10px; color:#AAAAAA; line-height:12px; }
+					div#headerRight .headerService a {text-decoration:none; font-size:10px; color:#AAAAAA; line-height:12px; }
+					
+					div#headerRight .headerTableRow1 {background-color:white; }
+					div#headerRight .headerTableRow2 {background-color:white; height:12px; vertical-align:middle;}
+					div#headerRight td {vertical-align:middle;}
+					div#headerSearch input {color:#AAAAAA;}
+
+				#topNav { position:relative;  /* DEBUG: Is this used? */
+					padding-left:15px;
+					background-color: white;
+					height:80p;
+					text-align:center;
+					margin-bottom:15px;
+					}
+			#middleBand {position:relative;
+	
+				background-color:#66FF33; /* DEBUG: bright green */
+				width:100%;
+				}		
+			
+            #center { position:relative; /* center is really restOfBand to the right of left */ 
+				
+				float:left; 
+				margin-left: 200px; */
+                width:400px;
+				min-height:485px; /* let it expand as its content expands? */
+                z-index:3; 
+				background-color:pink;
+                } 
+				
+						
+			#footer { position:relative;
+                clear:both;
+                z-index:3;
+				background-color:blue;
+				text-align:center; * DEBUG: useful? */
+				margin-top:20px;
+                }
+				#footer #share {padding-top:40px; padding-left:0px!important; } /* in footer — DEBUG: center this rather than padding */
+	
+					
+			/* ————— page layout: major divs —————————————————————————————————— */	
+   			 
+		/*
+            body {
+	
+				background-color:whitesmoke;
+                font-family:Arial, Helvetica, sans-serif;
+				font-size:12px; 
+				color:#6D6d6d; 
+                }
+				
+	          #wrapper {
+                width:830px;
+                margin:0;
+                margin-left: auto;
+                margin-right: auto;;
+                z-index:2;
+				background-color:#66CCCC; 
+                }
+            #header{ position:relative;
+                width:100%;
+                background-color:white; 
+				min-height:85px;		
+                z-index:3;
+                }
+			#topNav { position:relative;
+				padding-left:15px;
+				background-color: white;
+				height:80p;
+				text-align:center;
+				margin-bottom:15px;
+				}
+	
+				
+            #center { position:relative;
+				float:none; 
+	
+                width:100%
+                z-index:3; 
+				background-color:white;
+				min-height: 300px;
+                } 
+			
+			
+			#footer { position:relative;
+                clear:both;
+                z-index:3;
+				background-color:white;
+				text-align:center;
+				margin-top:20px;
+                }
+	*/
+	
+			/* ———— within header  ———————————————————————————————— */
+			
+			#headerMask { position:absolute;
+				top:0px;
+				right:0px;
+				z-index:4;
+				}
+				
+								
+			/* ———— ( within footer )———————————————————————————————————————————*/
+			
+			#share {padding-top:20px; padding-left:340px;}
+			.addthis_button_compact { text-decoration:none; font-size:11px; color:gray; } 
+			#center {margin-left:0px!important;}
+				
+			/* ———— (on home page) ———————————————————————— */
+			
+				
+			/* ———— (on category page) ———————————————————————— */
+			
+			
+			/* ———— (on sub category page) ———————————————————————— */
+									
+				
+			/* ———— (on item page) ———————————————————————— */
+			
+						
+			/* ———— ( within footer )———————————————————————————————————————————*/
+			
+			#share {padding-top:20px; padding-left:340px;}
+			.addthis_button_compact { text-decoration:none; font-size:11px; color:gray; } 
+			#center {margin-left:0px!important;}
+						
+			
+			/* ———— misc styles  ——————————————————————————————————————————————— */
+			
+			.visible {visibility:visible;}
+			*:focus { outline:0;} /* to get rid of blue focus box (in Safari) on accordian */	
+	
+			
+	

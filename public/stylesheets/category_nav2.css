@@ -1,0 +1,17 @@
+<style type="text/css">
+	/* css for the accordion-style fly out left nav used. js and original css for the nav by Stu Nelson */
+	.padding {height:300px;}
+	/* #wrap {position:relative; height:200px; width:110px; z-index:100;} */
+	#nav {
+		position:absolute; 
+		left:20px; top:60px;  /* This overrides left:0 from leftNav.css */;
+		list-style:none;
+		}
+	#nav ul {padding:0; margin:0; list-style:none; font-family:arial, sans-serif; font-weight:medium;}
+	#nav li {font-size:11px!important; line-height:24px; color:#404041; cursor:pointer; width:100%; padding-left:10px;}
+	#nav li.down {text-indent:10px;}
+	#nav li a {padding-left:10px; white-space:nowrap;color:white; text-decoration:none; font-size:11px !important;} 
+	#nav li a:hover {background-color: teal; padding:5px;} 
+	#nav li ul li a {padding-left:0;}
+
+</style>

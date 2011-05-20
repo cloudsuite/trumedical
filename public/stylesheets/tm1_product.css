@@ -1,0 +1,285 @@
+@charset "UTF-8";
+			/* CSS Document */
+
+			 /* ———— reset css styles all browsers   ————— */
+            html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+				margin:0;
+				padding:0;
+				border:0;
+				font-weight:inherit;
+				font-style:inherit;
+				font-size:100%;
+				font-family:inherit;
+				vertical-align:top;
+			}
+        
+			* { padding:0px; margin:0px; }
+	
+					
+			/* ————— page layout: major divs —————————————————————————————————— */	
+   			 
+		
+            body {
+	
+				background-color:whitesmoke;
+                font-family: Arial, Helvetica, sans-serif; /* surprice: IS affecting text in header, etc. */
+				font-size: 11px; /* TODO: remove redundant declarations from contained divs */
+				color: #6d6d6d; /* TODO remove redundant declarations from contained divs */
+                }
+				
+	        #wrapper {
+                width:840px;	
+				height:770px; /* Don't think I need this; let it expand vertically with contained divs */
+                margin:0;
+                margin-left: auto; margin-right: auto;
+                z-index:2;
+				background-color:white; /* DEBUG: #66CCCC: this was the teal I wanted to remove */
+                }
+            #header{ position:relative; /* establish coordinate frame for contained divs */
+                width:100%;
+                background-color:white; 
+				min-height:85px;	/* otherwise collapses to height of non-abasolutely positioned content */	
+                z-index:3;
+                }
+				#headerLeft{position:absolute; /* relative to containing div #header */
+					top:0px;
+					left:0px;
+					width:220px;
+					height:80px;
+					}
+					div#headerLeft img {position:absolute; top:0; left:0;}
+					
+				#headerRight{position:absolute; /* relative to containing div #header */
+					top:0px;
+					right:0px;
+					min-width:320px;
+					neight:80px;
+					padding-right:10px;
+					z-index:11;
+					}
+					div#headerRight .headerExplore {font-size:12px; color:#AAAAAA; }
+					div#headerRight .headerBag {font-size:12px; color:#AAAAAA;}
+					div#headerRight .headerBagItemCount {font-size:11px; color:#AAAAAA; text-align:left;}
+					
+					div#headerRight .headerAccount, .headerService {}
+					div#headerRight .headerAccount a {text-decoration:none; font-size:10px; color:#AAAAAA; line-height:12px; }
+					div#headerRight .headerService a {text-decoration:none; font-size:10px; color:#AAAAAA; line-height:12px; }
+					
+					div#headerRight .headerTableRow1 {background-color:white; }
+					div#headerRight .headerTableRow2 {background-color:white; height:12px; vertical-align:middle;}
+					div#headerRight td {vertical-align:middle;}
+					div#headerSearch input {color:#AAAAAA;}
+
+				#topNav { position:relative;  /* DEBUG: Is this used? */
+					padding-left:15px;
+					background-color: white;
+					height:80p;
+					text-align:center;
+					margin-bottom:15px;
+					}
+			#middleBand {position:relative;
+	
+				background-color:#66FF33; /* DEBUG: bright green */
+				width:100%;
+				}		
+			#left { position:relative; /* within containing div #middleBand */
+				float:left;
+				width:180px;
+				min-height:485px;  /* let it expand as contents expands  */
+				background-color:white; /* #00FFFF a bright, light tealish blue (not 'teal') */
+	
+			}
+				#suggest {position:relative; /* establish positioning context for contained divs of class suggestItem */
+					padding-left:10px;
+					width:160px;
+					height:485px; /* same question: min/max or unstated? */
+					}
+					#suggest .suggestTitle {font-size:10px; color:#AAAAAA; padding-left:22px;padding-top:0px; padding-bottom:10px;}
+					
+				.suggestedItem { position:relative;
+					width:140px; /*images are 134px; how center them? See comment on padd-left below. */
+					margin-left:auto; margin-right:auto; /* This centers .suggestedItem divs within containing div #suggest */
+					padding-left:6px; /* DEBUG: a hack; Why can't I center div.suggestedItemImage within div.suggestedItem? */
+					height:220px;
+					border:none; /* NEW: in itemNew border: solid thin pink */
+					margin-bottom:5px;
+					background-color:white;
+					}
+				 
+					.suggestedItem p.itemName { font-size:10px!important; color: #AAAAAA!important; text-align:center; text-decoration:underline; padding:0px 10px 5px 10px!important; }
+					.suggestedItem p.itemPrice { font-size:10px!important; color: #AAAAAA!important; text-align:center; }
+					.suggestedItem div.suggestedItemImage { margin-left:auto; margin-right:auto;} /* wrap image in div so can center it within containing div */
+						/* its not working: Why? Works below for centering #itemPicture; (only for divs with ids?) DEBUG */
+            #center { position:relative; /* center is really restOfBand to the right of left */ 
+				
+				float:left; 
+				/* margin-left: 180px; */
+                width:660px;
+				min-height:485px; /* let it expand as its content expands? */
+                z-index:3; 
+				background-color:white;
+                } 
+				#centerLeft { position:relative; /* relative to containing div #center */
+					top:0px;
+					margin-left:40px; 
+					float:left;
+					width:300px;
+					min-height:485px;
+					background-color:white; /* DEBUG: yellow for testing; white in production */
+					}
+					#itemPicture { 
+						margin-left:auto; margin-right:auto;
+						margin-top:0px; 
+						width:294px; 
+						height:414px; 
+						border: solid 3px #D8DFE6; /* add shadow */
+						 -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+						-webkit-box-shadow: 2px 2px 5px #777777; -moz-box-shadow: 2px 2px 5px #777777; box-shadow: 2px 2px 5px #777777;
+	 
+						}
+				#centerRight { position:relative; 
+					margin-left:380px; /* DEBUG: why shouldn't this be 40px? ie 40px to the right of #centerLeft? */
+					width:280px;
+					padding-left:10px;
+					}
+
+					#centerRight h3 {font-size:13px; color:black; margin-bottom:10px; font-weight:bold;}
+	
+					#itemDescription { position:relative; /* so will force divs below it down as it grows */
+						width:250px;
+						min-height:250px; /* DEBUG: for testing */
+						background-color: #white; /* DEBUG: #CCFF99 for testing */
+						}
+						#itemDescription p.price {font-size:10px;color:black; margin-bottom:10px;}
+						#itemDescription ul {list-style-type:disc; list-style-position:inside; margin-bottom:20px;} /* or outside with left padding */
+						#itemDescription ul li {font-size:10px;color:black; margin-top:5px;}
+
+						
+					#itemBuy {position: relative; /* it will be forced down by div above it #itemDescription */
+						width:250px;
+						/* min-height:110px;*/
+						background-color:white; /* DEBUG: 'purple' for testing */
+						}
+					#viewColorsPopup, #viewSizesPopup { background-color:white; padding:10px; border: solid thin Gainsboro;}
+						
+					#itemShare { position:relative;
+						margin-top:20px;
+						width:250px;
+						}
+					#recentlyViewed { position:relative;
+						width:250px;
+						background-color:white; /* DEBUG:testing */
+						margin-top:20px; 
+						}
+						.recentlyViewedItem { position:relative;
+							float:left;
+							margin-right:5px;
+							width:60px;
+							height:100px;
+							/* border: solid thin pink */ /* for NEW */
+							}
+						p.recentlyViewedTitle {width:100%; border-bottom: solid thin gray; line-height: 16px; vertical-align:middle; text-align:left;}	
+
+						
+			#footer { position:relative;
+                clear:both;
+                z-index:3;
+				background-color:white;
+				text-align:center; * DEBUG: useful? */
+				margin-top:20px;
+                }
+				#footer #share {padding-top:40px; padding-left:0px!important; } /* in footer — DEBUG: center this rather than padding */
+	
+			/* ———— within header  ———————————————————————————————— */
+			#headerMask { position:absolute;
+				top:0px;
+				right:0px;
+				z-index:4;
+				}
+			/* ———— within footer  ———————————————————————————————— */
+			#share {padding-top:20px; padding-left:340px;}
+			.addthis_button_compact { text-decoration:none; font-size:11px; color:gray; } 	
+				
+			/* ———— within left  ———————————————————————————————— */
+			
+			#left p, li {font-size:12px; color:#333333;}
+			
+			/* ———— nav implemented using jQuery accordian ————————— */
+			
+			*:focus { outline:0;} /* to get rid of blue focus box (in Safari) on accordian */
+					
+			#accordion {position: relative;
+				margin:30px 10px 30px 10px;
+				font-size:11px;
+				width:145px;
+				} 
+			div#accordion h3 {border:none; font-weight:normal; font-size:10px; 
+				margin-left:0px !important; padding-left:0px !important; 
+				text-transform:uppercase; }
+			div.accordian_l2_nav {padding-left:21px !important;} /* controls indent of 2nd level options */
+			div.accordian_l2_nav a {font-size:11px;line-height:14px;color:gray;text-decoration:none;}
+			div.accordian_l2_nav p {margin-bottom:2px;}
+			/* highlights text of element selected from within subpane of accordian */
+			div.accordian_l2_nav a:hover {color:teal;} /* or highlight by font-weight:bold */
+			/* Is there any way of highlighting entire horizontal band this text element is in? No; not with just CCC. */
+	
+			
+			/* ———— main top menu (within #center)  ————————————————————————— */
+		
+			div#menu li a span {color:#666666 !important;text-transform:uppercase;}
+				
+			/* ———— (on home page) ———————————————————————— */
+						
+				
+			/* ———— (on category page) ———————————————————————— */
+			
+			
+			#categoryTitle { position:relative; /* if make absolute then middleBand does not grow down */
+				height:140px;
+				width:100%; 
+				border-bottom: solid thin #990000;
+				color:#6d6d6d;
+				}
+			#categoryTitle_image { position:absolute;  
+				top:0px;
+				left:360px;
+				height:140px;
+				width:240px; /* ? want it stretched? */  
+				background-color: pink;/* color invisible;overlayed with image */
+				}
+	
+			#itemsInCategory { position:relative; 
+				top-margin:140px; /* DEBUG: why necessary? why doesn't it just go BELOW categoryTitle? */
+				width:100%;
+				}
+				
+			div#categoryTitle h1 {padding:15px 0px 10px 25px;font-weight:300;font-size:24px;color:#6D6D6D; text-transform:uppercase;}
+			div#categoryTitle h2 {padding:25px 0px 10px 25px; color:#990000;}
+			div#categoryTitle h3 {padding:15px 0px 10px 25px; color:#990000;text-transform:uppercase;}
+			div#categoryTitle img {width:140px; height:140px;}
+			
+			div.gift {width:180px; height:220px; margin:20px 0 0 20px;float:left; position:relative;} 
+				/* this assumes that I can float a whole div not just an image; seems to work */
+			div.gift img {height:180px; width:180px; border: solid thin #d6d6d6;}
+			div.gift p.giftName {font-size:10px;color:#666666; text-align:left; margin-top:5px;}
+			div.gift p.giftForm {font-size:10px;color:#666666; text-align:left;}
+			div.gift p.giftPriceRange {font-size:10px; color:#990000; text-align:left;}
+			
+							
+				
+			/* ———— (on item page) ———————————————————————— */
+			
+	
+			
+			/* ————  within footer———————————————————————————————————————————*/
+			
+
+			
+			
+			/* ———— misc styles  ——————————————————————————————————————————————— */
+			
+			.visible {visibility:visible;}
+			
+	
+			
+	

@@ -1,0 +1,249 @@
+@charset "UTF-8";
+			/* CSS Document */
+
+			 /* ———— reset css styles all browsers   ————— */
+            html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+				margin:0;
+				padding:0;
+				border:0;
+				font-weight:inherit;
+				font-style:inherit;
+				font-size:100%;
+				font-family:inherit;
+				vertical-align:top;
+			}
+        
+			* { padding:0px; margin:0px; }
+		
+				
+			/* ————— page layout: major divs —————————————————————————————————— */	
+			
+			body {
+				background-color:white;
+            font-family: Arial, Helvetica, sans-serif; /* surprise: IS affecting text in header, etc. */
+				font-size: 11px; /
+				color: #6d6d6d; 
+				}
+				
+	        #wrapper {
+					width:960px; /* 800px 3-panel widget plus 80px margin on each site */	
+					height:1000px; /* Don't think I need this; let it expand vertically with contained divs */
+					margin:0;
+					margin-left: auto; margin-right: auto;
+					z-index:2;
+					background-color:66CCCC; /* DEBUG: #66CCCC= TEAL Without # does nothing */
+               }
+					#content { margin-top:0px!important; padding-top:0px;} /* unused in site */
+
+            	#header{ position:relative; /* establish coordinate frame for contained divs */
+	               width:800px;
+	               background-color:white; 
+						min-height:100px;	/* otherwise collapses to height of non-abasolutely positioned content */	
+	               z-index:3;
+	               }
+							div#logoMark { position:absolute;
+								top:0px;
+								left:-10px;
+								width:200px;
+								min-height:90px;	
+								}
+
+							div#account { position:absolute;
+								top: 20px;
+								right:00px;
+								background-color:white;
+								font-size:11px;
+								color:black;
+								}
+							div#contact { position:absolute;
+								top: 40px;
+								right:00px;
+								background-color:white;
+								font-size:11px;
+								color:black;
+								}
+							div#cart { position:absolute;
+								top: 60px;
+								right:00px;
+								background-color:white;
+								font-size:11px;
+								color:black;
+								}
+							div#search { position: absolute; 
+								top: 80px;
+								right:-2px;
+								min-height:20px; 
+								width:215px; 
+								background-color:white;
+								} 
+							#cse {  /* for google search results */
+								background-color:white; z-index:6 
+								}
+						
+						#headerMask { position:absolute;
+							top:0px;
+							right:0px;
+							z-index:4;
+							}
+						
+					#middleBand { 
+						position:relative;
+						background-color:white; /* 66FF33: DEBUG: bright green; Why only coming down behind banner, not all of center? */
+						width:800px;
+						}	
+
+						#left { /* NOT USED IN TM1 LAYOUT */
+							position:relative;
+							float:left; 
+							width:240px;
+							min-height:600px;
+							z-index:10; /* want it to go down over the footer until make that push down properly */
+							background-color:#AAAAAA; /* something a little lighter now that left is so wide? */
+							
+							}
+							#leftMask { /* to prevent menu items from scrolling off bottom of fixed-height #left */
+								position:absolute;
+								bottom:0px; left:0px;
+								width:100%;
+								min-height:30px;
+								background-color: #999999; /* to match end color of gradient */
+								z-index: 999; /* so it will cover menu items opening down */
+								}	
+
+						/* There is no 'right' in this layout, so 'center' is everything to the right of 'left' within 'middleBand' */
+						#center {  /* NOT USED IN TM1 LAYOUT */ 
+							float:left; 
+							padding: 20px 20px 20px 20px; 
+							width:680px; /* 960 - 240 for # left -40 for padding */
+							/* min-height:485px; /* let it expand as its content expands? */
+							z-index:3; 
+							background-color:white;
+							}
+							#LLC_banner {
+								height: 100px;
+								width:680px; /* = 960-240- 720px */
+								margin-left: 0px;
+								margin-top:-20px;
+							}
+				
+					#footer { 
+						position:relative;
+						clear:both;
+						z-index:3;
+						background-color:white;
+						text-align:center;  
+						padding-top:20px;
+						padding-bottom:20px;
+		            }
+						#center {margin-left:0px!important;}
+						#share {padding-top:20px; padding-left:340px;}
+				
+
+			/* ———— within header  ———————————————————————————————————————— */
+			
+				#topNavLeft { background-color:white;}
+				#topNavLeft ul {list-style:none;margin:0; padding:0;}
+				#topNavLeft li {display:inline;}
+				#topNavLeft a:link,a:visited {font-weight:medium;color:gray;text-decoration:none;}
+				#topNavLeft a:hover,a:active {font-weight:bold;color:#D49253;text-decoration:none;}
+				#topNavLeft li a {font-color:gray}
+				#topNavLeft li.current a {color:#D49253; font-weight:bold;}
+					
+				#account { background-color:white;}
+				#account ul {list-style:none;margin:0; padding:0;}
+				#account li {display:inline;}
+				#account a:link,a:visited {font-weight:medium;color:gray;text-decoration:none;}
+				#account a:hover,a:active {font-weight:bold;color:#D49253;text-decoration:none;}
+				#account li a {font-color:gray}
+				#account li.current a {color:#D49253; font-weight:bold;}
+				
+				#contact { background-color:white;}
+				#contact ul {list-style:none;margin:0; padding:0;}
+				#contact li {display:inline;}
+				#contact a:link,a:visited {font-weight:medium;color:gray;text-decoration:none;}
+				#contact a:hover,a:active {font-weight:bold;color:#D49253;text-decoration:none;}
+				#contact li a {font-color:gray}
+				#contact li.current a {color:#D49253; font-weight:bold;} 	
+				
+				#cart ul {list-style:none;margin:0; padding:0;}
+				#cart li {display:inline;}
+				#cart a:link,a:visited {font-weight:medium;color:gray;text-decoration:none;}
+				#cart a:hover,a:active {font-weight:bold;color:#D49253;text-decoration:none;}
+				#cart li a {font-color:gray}
+				#cart li.current a {color:#D49253; font-weight:bold;}
+				
+				#checkout_button {
+					width:60px;
+					padding:2px 3px 4px 3px;
+					font-size:10px;
+					line-height: 15px;
+					margin-top:-4px!important;
+					margin-left:2px;
+					font-family: inherit;
+					color: white;
+					/* text-shadow: 0 1px 2px #FFFFFF; */
+					background-color: #D68533; /* rust color */
+					border:none;
+					border-radius: 2px;
+					-moz-border-radius: 2px;
+					-webkit-border-radius: 2px;
+				}
+				#search_button { position:absolute;
+					width:60px;
+					padding:2px 0px 4px 3px;
+					font-size:10px;
+					line-height: 15px;
+					margin-top:-2px;
+					margin-left:2px;
+					font-family: inherit;
+					color: white;
+					/* text-shadow: 0 1px 2px #FFFFFF; */
+					background-color: #D68533; /* rust color */
+					border:none;
+					border-radius: 2px;
+					-moz-border-radius: 2px;
+					-webkit-border-radius: 2px;
+				}
+				#searchBox { display:inline; 
+					width:120px;
+					line-height:18px;
+					border:solid thin gray;
+					background-color:white;
+					}
+				#searchButton {display:inline; margin-left:5px;}
+								
+			/* ———— ( within footer )———————————————————————————————————————————*/
+				
+				#footer ul {list-style:none;margin:0; padding:0;}
+				#footer li {display:inline;}
+				#footer a:link,a:visited {font-weight:medium;color:gray;text-decoration:none;font-size:12px;}
+				#footer a:hover,a:active {font-weight:bold;color:#D49253;text-decoration:none;font-size:12px;}
+							
+				.addthis_button_compact { text-decoration:none; font-size:11px; color:gray; } 
+				
+			/* ———— within left ——————————————————————————————————————————————— */	
+			
+
+
+				
+			/* ———— (on home page) ———————————————————————— */
+			
+				
+			/* ———— (on category page) ———————————————————————— */
+			
+			
+			/* ———— (on sub category page) ———————————————————————— */
+									
+				
+			/* ———— (on item page) ———————————————————————— */
+		
+						
+			
+			/* ———— misc styles  ——————————————————————————————————————————————— */
+			
+			.visible {visibility:visible;}
+			*:focus { outline:0;} /* to get rid of blue focus box (in Safari) on accordian */
+			.clearfix { display:block; clear:both;}	
+	
+			
+	

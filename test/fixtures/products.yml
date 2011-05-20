@@ -1,0 +1,33 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tms_part_number: MyString
+  category: 
+  title: MyString
+  description: MyString
+  features: MyString
+  options: MyString
+  retail_price: 9.99
+  web_price: 9.99
+  image_url: MyString
+  vendor: MyString
+  vendor_sku: MyString
+  sammons_category: MyString
+  sammons_part_number: MyString
+  sold_in_units: MyString
+
+two:
+  tms_part_number: MyString
+  category: 
+  title: MyString
+  description: MyString
+  features: MyString
+  options: MyString
+  retail_price: 9.99
+  web_price: 9.99
+  image_url: MyString
+  vendor: MyString
+  vendor_sku: MyString
+  sammons_category: MyString
+  sammons_part_number: MyString
+  sold_in_units: MyString

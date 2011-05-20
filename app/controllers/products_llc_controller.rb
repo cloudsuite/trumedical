@@ -1,0 +1,2 @@
+class ProductsLlcController < ApplicationController
+end

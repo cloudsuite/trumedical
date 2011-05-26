@@ -1,2 +1,84 @@
-<h1>Company#returns</h1>
-<p>Find me in app/views/company/returns.html.erb</p>
+<h1>Company#about</h1>
+<p>Find me in app/views/company/about.html.erb</p>
+<!--  —————————————————————————————————————————————————————————————————————
+			Controller: Company
+			Action:     about  
+			——————————————————————————————————————————————————————————————————————
+-->
+
+<!-- header includes  ————————————————————————————————————————————————————  -->
+
+<% content_for (:controller_specific_css_files) do %>
+	<%= stylesheet_link_tag "leftNav.css" %>
+	<%= stylesheet_link_tag "category.css" %>
+	<link rel="Stylesheet" type="text/css" href="../stylesheets/smoothDivScroll.css" />
+
+<% end %>
+
+<% content_for (:controller_specific_js_files) do %>
+
+	<!-- <%= javascript_include_tag "jquery.tools.min.js" %> -->
+	<!-- replace with reference to jquery-ui on Google CDN -->
+	<!-- <script src="http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js"></script> -->
+	<script type="text/javascript" src="../javascripts/jquery.smoothdivscroll.js" ></script>
+	<script type="text/javascript" src="../javascripts/jquery.leftNav.js"></script>
+	
+<% end %>
+
+<% content_for (:controller_specific_jQuery_document_ready ) do %>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			/* $(".scrollable").scrollable(); // initialize jquery tools 'scrollable'; consider if have cross browser problems with smoothDivSchroll */
+			$("div#makeMeScrollable").smoothDivScroll({
+			});
+		});	
+	</script>
+	
+<% end %> 
+
+<% content_for (:page_specific_style_declarations) do %> 
+<% end %>	
+
+
+<!-- leftNav ———————————————————————————————————————————————————————————————— -->
+	
+<% content_for (:leftNav) do %>
+	<!-- 
+		render :partial => 'shared/leftnav' include left nav from a partial template since it is the same in category and item templates
+	-->
+<% end %> 
+   
+   
+<!-- #main   ———————————————————————————————————————————————————————————————— -->
+   
+<% content_for (:main) do %>  
+   
+	<!-- left  ——————————————————————————————————————————————————————— -->
+	  
+	<div id="left">
+		<%= image_tag "patients/patients_photo_2.jpg" %>
+ 	</div>
+         
+  <!-- centerRight  ————————————————————————————————————————————————————— -->
+     
+  <div id="center_right" style="z-index:7;">
+		
+		<div id="center_right_content">
+			<h1>Returns</h1>
+			
+			<h2>Lorem Ipsum</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non bibendum ipsum. Phasellus posuere, diam vel tempor mattis, ligula dolor blandit erat, id sollicitudin elit massa eu enim. Phasellus vitae ligula quis dui faucibus iaculis. Vivamus et massa diam. Donec aliquet tellus vel lacus iaculis hendrerit. Donec a massa in nunc dapibus posuere. Aliquam et sapien eu risus tristique vestibulum. Morbi vestibulum sollicitudin pellentesque. In ac metus at risus bibendum vulputate ut eget leo. Donec elit diam, interdum vel volutpat sit amet, tempus in turpis.</p>
+		<h2>Duis in nibh</h2>
+		<p>
+		Duis in nibh at nisi malesuada fringilla ut interdum ligula. Vivamus a felis orci, quis porta sapien. Nulla facilisi. Nullam bibendum enim a ipsum lobortis ut consequat nulla imperdiet. Quisque lobortis pellentesque ligula nec congue. Ut volutpat nisi sed arcu lacinia sit amet ornare urna laoreet. Duis a tellus velit. Aenean nec mollis elit. Suspendisse potenti. Pellentesque in nisi id urna aliquet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pharetra pulvinar pharetra. Suspendisse potenti.</p>
+		<p>
+		Pellentesque sit amet feugiat leo. Fusce auctor, nisi euismod imperdiet suscipit, justo nisl venenatis tellus, gravida lobortis justo leo nec erat. Proin at dapibus libero. Curabitur sagittis auctor quam, a consectetur nisi molestie in. Integer fermentum pellentesque elit, sed aliquet elit feugiat sit amet. Aenean ac rhoncus quam. Nunc et nulla ut arcu convallis iaculis et non velit. Sed quis metus sit amet leo consectetur tristique eget in mauris. Cras et turpis vel turpis malesuada sagittis ut id nibh. Mauris tincidunt justo eget enim mattis luctus. Donec dolor quam, lacinia quis ultrices accumsan, rutrum sed turpis. Donec vel mi eget sapien semper tempor eu a magna. Aliquam erat volutpat. .</p>
+
+		</div> <!-- end div 'center_right_content' >
+  </div><!-- end div 'center_right' -->
+ 
+
+
+<% end %>

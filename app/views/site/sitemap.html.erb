@@ -1,0 +1,284 @@
+<!--  —————————————————————————————————————————————————————————————————————
+			Controller: Clinicians
+			Action:     show
+			
+			Doc:		This version has a smooth scroller for the buff images
+						based on www.smoothdivscroll.com widget 
+			ToDo:		1. test static text layout vers scroller 
+
+			——————————————————————————————————————————————————————————————————————
+-->
+
+<!-- header includes  ————————————————————————————————————————————————————  -->
+
+<% content_for (:controller_specific_css_files) do %>
+	<%= stylesheet_link_tag "category_nav.css" %>
+	<%= stylesheet_link_tag "jquery.treeview.css" %>
+	<link rel="Stylesheet" type="text/css" href="../stylesheets/smoothDivScroll.css" />
+
+<% end %>
+
+<% content_for (:controller_specific_js_files) do %>
+
+	<!-- <%= javascript_include_tag "jquery.tools.min.js" %> -->
+	<!-- replace with reference to jquery-ui on Google CDN -->
+	<!-- <script src="http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js"></script> -->
+
+	<%= javascript_include_tag "jquery.treeview.js" %>
+	
+<% end %>
+
+<% content_for (:controller_specific_jQuery_document_ready ) do %>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#tree").treeview({
+					collapsed: true,
+					animated: "medium",
+					control:"#sidetreecontrol",
+					prerendered: true,
+					persist: "location"
+				});
+		});	
+	</script>
+	
+<% end %> 
+
+<% content_for (:page_specific_style_declarations) do %> 
+<% end %>	
+
+
+<!-- leftNav ———————————————————————————————————————————————————————————————— -->
+	
+<% content_for (:leftNav) do %>
+	<!-- 
+		render :partial => 'shared/leftnav' include left nav from a partial template since it is the same in category and item templates
+	-->
+<% end %> 
+   
+   
+<!-- #main   ———————————————————————————————————————————————————————————————— -->
+   
+<% content_for (:main) do %>  
+   
+	<!-- left  ——————————————————————————————————————————————————————— -->
+	  
+	<div id="left">
+		<%= image_tag "sitemap/sitemap_photo_1.jpg" %>
+ 	</div>
+         
+  <!-- centerRight  ————————————————————————————————————————————————————— -->
+     
+  <div id="center_right" style="z-index:7;">
+		
+		<div id="center_right_content">
+			<h1>Site Map</h1>
+			<div id="sidetree">
+
+				<div class="treeheader">&nbsp;</div>
+				<div id="sidetreecontrol" style="margin-top:5px; margin-bottom:15px;"> <a href="?#">Collapse All</a> | <a href="?#">Expand All</a> </div>
+
+				<ul class="treeview" id="tree">
+
+					<!-- Home with header & footer ————————————————————— -->
+					<li class="expandable">
+						<div class="hitarea expandable-hitarea"></div>
+						<span><strong>Home</strong></span>
+						<ul style="display: none;">
+								<li><a href="#Netsuite">Login</a> | <a href="#Netsuite">Register</a> | <a href="#Netsuite">My Cart</a> | <a href="#Netsuite">Checkout</a>
+								</li>
+								<li><a href="http://www.facebook.com/VMSInc">Facebook</a> | <a href="http://twitter.com/vmsinc">Twitter</a> | <a href="http://youtube.com/user/VMS">You Tube </a>  
+								</li>
+							</ul>
+					</li>
+					
+					<!-- Patients/Caregivers ———————————————————— -->
+					<li class="expandable">
+						<div class="hitarea expandable-hitarea"></div>
+						<span><strong>Patients/Caregivers</strong></span>
+						<ul style="display: none;">
+								<li></li>
+								<li></li>
+							</ul>
+					</li>
+					
+					<!-- Clinicians ———————————————————— -->
+					<li class="expandable">
+						<div class="hitarea expandable-hitarea"></div>
+						<span><strong>Clinicians</strong></span>
+						<ul style="display: none;">
+								<li></li>
+								<li></li>
+							</ul>
+					</li>
+					
+					<!-- Payors ———————————————————— -->
+					<li class="expandable">
+						<div class="hitarea expandable-hitarea"></div>
+						<span><strong>Payors</strong></span>
+						<ul style="display: none;">
+								<li></li>
+								<li></li>
+							</ul>
+					</li>
+
+					<!-- Products ————————————————————————————————————— -->
+					<li class="expandable">
+
+						<div class="hitarea expandable-hitarea lastExpandable-hitarea"></div>
+						<span><strong>Products</strong></span>
+						<ul style="display: none;">
+
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Modalities</strong></span>
+								<ul style="display: none;">
+			
+									<li class="expandable">
+										<div class="hitarea expandable-hitarea"></div>
+										<span><strong>Clinical Electrotherapy</strong><span>
+										<ul style="display: none;">
+											<li>Accessories</li>
+											<li>Combination</li>
+											<li>Diathermy</li>
+											<li>Electrodes</li>
+											<li>Iontophoresis</li>
+											<li>Lotions & Gels</li>
+											<li>Stim</li>
+											<li>Ultrasound</li>
+										</ul>
+									</li>
+									
+									<li>Continuous Passive Motion</li>
+									<li>Hot & Cold Therapy</li>
+									<li>Hydrotherapy & Aquatics</li>
+									<li>Personal Electrotherapy Devices</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Clinical Products & Supplies</strong></span>
+								<ul style="display: none;">
+									<li>Balance & Stability</li>
+									<li>Clinical Equipment</li>
+									<li>Clinical Supplies</li>
+									<li>Education</li>
+									<li>Hand Therapy</li>
+									<li>Massage Products</li>
+									<li>Pillows & Cushions</li>
+									<li>Resistive Exercise</li>
+									<li>Therapeutic Exercise</li>
+									<li>Topical Analgesics</li>
+									
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Tables & Traction</strong></span>
+								<ul style="display: none;">
+									<li>Massage Tables</li>
+									<li>Mat Tables</li>
+									<li>Personal Traction Devices </li>
+									<li>Positioning Products</li>
+									<li>Traction</li>
+									<li>Treatment Tables</li>
+									<li>Work Tables</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Fitness Equipment</strong></span>
+								<ul style="display: none;">
+									<li>All Body Exercisers</li>
+									<li>Ellipticals</li>
+									<li>Exercise Bikes</li>
+									<li>Treadmills</li>
+									<li>Weight Equipment</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Orthodepic Products & Supplies</strong></span>
+								<ul style="display: none;">
+									<li>Ankle & Foot</li>
+									<li>Back</li>
+									<li>Collars & Slings</li>
+									<li>Elbo</li>
+									<li>Hand & Wrist</li>
+									<li>Knee</li>
+									<li>Shoulder & Arm</li>
+									<li>Splinting</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>ATC & Taping</strong></span>
+								<ul style="display: none;">
+									<li>First Aid</li>
+									<li>Taping & Wrapping</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Evaluation Products</strong></span>
+								<ul style="display: none;">
+									<li>Miscellaneous</li>
+									<li>Pulse Evaluation</li>
+									<li>Range of Motion</li>
+									<li>Sensory Evaluation</li>
+									<li>Strength Evaluation</li>
+									<li>Weight & Edema</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Aids to Daily Living</strong></span>
+								<ul style="display: none;">
+									<li>Mobility</li>
+									<li>Reachers & Daily Aids</li>
+									<li>Seating & Bedding</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Lymphedema & Wound Care</strong></span>
+								<ul style="display: none;">
+									<li>Compression</li>
+									<li>Wound Management </li>
+								</ul>
+							</li>
+
+
+						</ul>
+					</li> <!-- end 'Products' -->
+
+
+					<!-- Company  ————————————————————————————————————— -->
+					<li class="expandable">
+						<div class="hitarea expandable-hitarea lastExpandable-hitarea"></div>
+						<span><strong>Company</strong></span>
+						<ul style="display: none;">
+							<li><%= link_to "Company", 'company#about' %></li>
+							<li><%= link_to "Contact Us", 'company#contact' %></li>
+							<li><%= link_to "News", 'company#news' %></li>
+							<li><%= link_to "FAQs", 'company#faqs' %></li>
+						<!-- 
+							<li><%= link_to "Shipping", 'company#shipping' %></li>
+							<li><%= link_to "Returns", 'company#returns' %></li>
+						-->
+							<li><%= link_to "Home Services", 'company#service' %></li>
+						</ul>
+					</li> <!-- end 'Company' -->
+
+				</ul> <!-- end 'tree' -->
+
+			</div> <!-- end div 'sidetree' -->
+			
+		
+
+		</div> <!-- end div 'center_right_content' >
+  </div><!-- end div 'center_right' -->
+ 
+
+
+<% end %>

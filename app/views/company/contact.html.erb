@@ -1,2 +1,93 @@
-<h1>Company#contact</h1>
-<p>Find me in app/views/company/contact.html.erb</p>
+<h1>Company#about</h1>
+<p>Find me in app/views/company/about.html.erb</p>
+<!--  —————————————————————————————————————————————————————————————————————
+			Controller: Company
+			Action:     about  
+			——————————————————————————————————————————————————————————————————————
+-->
+
+<!-- header includes  ————————————————————————————————————————————————————  -->
+
+<% content_for (:controller_specific_css_files) do %>
+	<%= stylesheet_link_tag "leftNav.css" %>
+	<%= stylesheet_link_tag "category.css" %>
+	<link rel="Stylesheet" type="text/css" href="../stylesheets/smoothDivScroll.css" />
+
+<% end %>
+
+<% content_for (:controller_specific_js_files) do %>
+
+	<!-- <%= javascript_include_tag "jquery.tools.min.js" %> -->
+	<!-- replace with reference to jquery-ui on Google CDN -->
+	<!-- <script src="http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js"></script> -->
+	<script type="text/javascript" src="../javascripts/jquery.smoothdivscroll.js" ></script>
+	<script type="text/javascript" src="../javascripts/jquery.leftNav.js"></script>
+	
+<% end %>
+
+<% content_for (:controller_specific_jQuery_document_ready ) do %>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			/* $(".scrollable").scrollable(); // initialize jquery tools 'scrollable'; consider if have cross browser problems with smoothDivSchroll */
+			$("div#makeMeScrollable").smoothDivScroll({
+			});
+		});	
+	</script>
+	
+<% end %> 
+
+<% content_for (:page_specific_style_declarations) do %> 
+<% end %>	
+
+
+<!-- leftNav ———————————————————————————————————————————————————————————————— -->
+	
+<% content_for (:leftNav) do %>
+	<!-- 
+		render :partial => 'shared/leftnav' include left nav from a partial template since it is the same in category and item templates
+	-->
+<% end %> 
+   
+   
+<!-- #main   ———————————————————————————————————————————————————————————————— -->
+   
+<% content_for (:main) do %>  
+   
+	<!-- left  ——————————————————————————————————————————————————————— -->
+	  
+	<div id="left">
+		<%= image_tag "patients/patients_photo_2.jpg" %>
+ 	</div>
+         
+  <!-- centerRight  ————————————————————————————————————————————————————— -->
+     
+  <div id="center_right" style="z-index:7;">
+		
+		<div id="center_right_content">
+			<h1>Contact Us</h1>
+			
+			<p>Have questions, concerns or need advice on a particular product?  Just let us know and our Customer Service Representatives will do their best to help you.  Hours of operation are Monday – Friday, 8am – 4pm EST.</p>
+
+			<p>
+			999.999.9999 customer service<br/>
+			999.999.9990 fax
+			</p>
+
+			<p>Tru Medical Solutions, Inc.<br/>
+			street<br/> 
+			city, state zip</p>
+
+			<p>
+			Home Services inquiries &mdash; <%= mail_to("homeservices@trumedical.com","homeservices@trumedical.com" ) %><br/>		
+			Sponsorships &mdash; <%= mail_to("sponsorships@trumedical.com","sponsorships@trumedical.com" ) %><br/>
+			Press Inquiries &mdash; <%= mail_to("press@trumedical.com","press@trumedical.com" ) %><br/>
+			General Information &mdash; <%= mail_to("info@trumedical.com","info@trumedical.com" ) %><br/>
+			</p>
+
+		</div> <!-- end div 'center_right_content' >
+  </div><!-- end div 'center_right' -->
+ 
+
+
+<% end %>

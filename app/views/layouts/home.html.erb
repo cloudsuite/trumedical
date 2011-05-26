@@ -1,0 +1,166 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<!--  —————————————————————————————————————————————————————————————————————
+				Layout: application.html.erb
+
+				Doc:		layout template applied to all pages in the site
+
+				——————————————————————————————————————————————————————————————————————
+
+				ToDo:
+					0. import basic layout from sites/trumedical/index_wbb.html
+					1. make links in footer live; fonts slightly larger? 
+					2. cut divs for popup windows we are not using as long as using Netsuite register/login
+					3. make search call Netsuite search? 
+					 
+				Known Bugs:	
+					1. 
+
+	-->
+
+  <title>VMS</title>
+	<%= stylesheet_link_tag "custom-theme/jquery-ui-1.8.10.custom.css" %>
+	<%= stylesheet_link_tag "tm1_base.css" %>
+
+	
+	<%= yield :controller_specific_css_files %>
+
+	<%= csrf_meta_tag %> 
+	
+	<%= javascript_include_tag "jquery-1.4.4.min","jquery-ui-1.8.10.custom.min" %>
+  <!-- javascript_include_tag "rails.js" Replace with jquery.rails.js -->
+
+	<%= yield :controller_specific_js_files %>
+	
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			
+			$("a[href='#']").click(function(){
+				alert("Oops. Uncaught as-yet-unimplemented link ");
+				return false;
+			});
+			$("a[href='#url']").click(function(){
+				alert("As-yet-unimplemented link.");
+				return false;
+			});
+			$("a[href='#Netsuite']").click(function(){
+				alert("This link will take you to one of the pages implemented in Netsuite's secure server.");
+				return false;
+			});
+
+			/* $("#checkout_button").click(button); */
+			/* $("#search_button").click(button); */
+			
+			$("#nav ul").hide();
+			$("#nav li:has(ul)").each(function() {
+				$(this).children().slideUp(400);
+			});
+
+			$("li.p1:has(ul)").click(function(event){
+				if (this == event.target) {
+					var current = this;
+					$("#nav li:has(ul)").each(function() {
+						if (this != current) $(this).children().slideUp(400);
+					});
+				$("ul:first", $(this)).slideToggle(400);
+				}
+			});
+
+			$("li.p2:has(ul)").click(function(event){
+				if (this == event.target) {
+					var current = this;
+					$("li.p2:has(ul)").each(function() {
+						if (this != current) $(this).children().slideUp(400);
+					});
+					$("li.p3:has(ul)").each(function() {
+						if (this != current) $(this).children().slideUp(400);
+					});
+					$("ul:first", $(this)).slideToggle(400);
+				}
+			});
+
+			$("li.p3:has(ul)").click(function(event){
+				if (this == event.target) {
+					var current = this;
+					$("li.p3:has(ul)").each(function() {
+						if (this != current) $(this).children().slideUp(400);
+					});
+					$("ul:first", $(this)).slideToggle(400);
+				}
+			});
+			
+			$("button", "#newsletter").button();
+
+		});	
+	</script>
+	
+	<%=  yield :controller_specific_jQuery_document_ready %>  
+	
+	<%=  yield :page_specific_style_declarations %> 
+
+</head>
+<body>
+	<div id="wrapper">
+		<!-- <div id="content"> -->
+			<!-- header ————————————————————————————————————————————————————————————————— -->
+			<div id="header">
+				<div id="logoMark">
+					<%= link_to image_tag("/images/header/logoMark_400x100.jpg"), :controller => 'home', :action => 'index' %>
+				</div>
+
+			</div> <!-- end 'header' -->                 
+			<!-- middleBand  ————————————————————————————————————————————————————————————— -->
+			<div id="middeBand">
+				<%= yield :middleBand %>
+				<br class="clearfix"> <!-- to push footer below expanding left nav. DOESN'T DO IT-->
+			</div>
+		
+			<!-- ————— divs for pop-up windows —————————————————————————————————————————— -->
+
+			<div id="newsletterPopUp" ></div>
+			<div id="register"></div>
+			<div id="login"></div>
+			<div id="shopping_cart"></div>
+		           
+		<!-- footer     ————————————————————————————————————————————————————————————— -->
+		
+		<div id="footer">
+
+        <ul>
+					<!--
+            <li style="display:inline;">
+                <div class="addthis_toolbox addthis_default_style" style="margin-left:150px; font-size:12px;" >
+                    <a class="addthis_button_facebook"></a>
+                    <a class="addthis_button_twitter"></a>
+                    <a class="addthis_button_email"></a>
+                    <span class="addthis_separator">Share&nbsp;&nbsp;&nbsp;|</span>
+                </div>
+            </li>
+					-->
+            <li><a href="#">Company&nbsp;&nbsp;&nbsp;|</a></li>
+            <li><a href="#">Contact&nbsp;&nbsp;&nbsp;|</a></li>
+            <li><a href="#">News&nbsp;&nbsp;&nbsp;|</a></li>
+            <li><a href="#">FAQs&nbsp;&nbsp;&nbsp;|</a></li>
+            <li><a href="#">Home Services&nbsp;&nbsp;&nbsp;|</a></li>
+            <li><a href="#">Site Map&nbsp;&nbsp;&nbsp;</a></li>
+            <li style="font-size:12px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&copy;Tru-Medical Solutions LLC</li>
+        </ul>
+
+			
+			</div> <!-- end of div 'footer' -->
+		<!-- </div> end of div 'content' --> 
+            
+	</div><!-- end of wrapper -->
+	
+	
+	<%= yield :js_before_close_of_body %> 
+	<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4cb483780005c931">
+  </script>
+
+</body>
+</html>
+
+

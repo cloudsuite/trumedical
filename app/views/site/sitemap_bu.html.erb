@@ -1,0 +1,320 @@
+
+!--  —————————————————————————————————————————————————————————————————————
+			Controller: Site
+			Action:     site_map	
+			——————————————————————————————————————————————————————————————————————
+
+			To Do	
+				1. Use layout for company pages?  or create one for site page(s)
+				2. Edit this to remove dependencies on vms
+				3. drop left nav from this page — it seems sort of redundant with site map
+				4. within product tree, only the LLC pages are real pages that you can go to; use the standard underlining in blue to indicate links you can click on and get to an actual page rather than opening another layer within the navigation. 
+				5. remove page-specific ccs declarations that relate to leftNav into leftNav.css; include this file in the header [DONE? — clearly not entirely ]
+				
+-->
+
+<!-- header includes  ————————————————————————————————————————————————————  -->
+
+<%= content_for(:page_title) do %>
+	<title>Tru-Medical / Site Map </title>
+<% end %>
+
+<%= content_for(:controller_specific_css_files) do %>
+	<%= stylesheet_link_tag "shop_by.css" %>
+	<%= stylesheet_link_tag "category_nav.css" %>
+	<%= stylesheet_link_tag "jquery.treeview.css" %>
+<% end %>
+
+<%= content_for(:controller_specific_js_files) do %>
+	<%= javascript_include_tag "jquery.treeview.js" %>
+
+<% end %>
+
+<%= content_for(:controller_specific_jQuery_document_ready ) do %>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$("#tree").treeview({
+					collapsed: true,
+					animated: "medium",
+					control:"#sidetreecontrol",
+					prerendered: true,
+					persist: "location"
+				}); 
+		});
+
+	</script>
+<% end %> 
+
+
+<%= content_for(:page_specific_style_declarations) do %> 
+
+	<style type="text/css">
+
+		/* ------ within header -------------------------------- */
+
+		/* ------- within left column --------------------------- */
+		div#colorBlock{ 
+			position: relative; 
+			width:220px; 
+			height:90px;
+			background-color:orange; 
+			padding: 10px 10px 0px 10px; 
+			margin-bottom:00px; 
+			}
+		
+		/* -----   within center -------------------------- */
+		
+		#mainContent { margin-top:40px; }
+		#mainContent h1 {font-size:24px; line-height:32px; color: orange; margin-bottom:10px;}
+		#mainContent p {font-size:12px; line-height:18px; color:gray; margin-bottom:15px;}
+		span.emphasized {font-weight:bold; color:teal;}
+		#mainContent ul { margin-left:20px;}
+		#mainContent ul li {font-size:12px;line-height:15px;margin-left:10px; margin-bottom:10px;}
+		#mainContent ul li:last-child { margin-bottom:15px;}
+		#mainContent ul li:first-child { margin-top:-5px; }
+
+	</style>
+	
+<% end %>	
+
+  
+   
+<!-- #middleBand   ———————————————————————————————————————————————————————————————— -->
+   
+<%= content_for(:middleBand) do %> 
+
+
+	<!-- left   ——————————————————————————————————————————————————————————————————— -->
+
+	<div id="left">
+		
+		<div id="shopByCategory">
+
+			 <!-- render :partial => 'shared/nav' -->
+		</div>
+		
+
+	</div><!-- end 'left' -->
+	
+	<!-- center  ———————————————————————————————————————————————————————————— -->
+	
+	<div id="center">
+		<!-- for results from Google site search
+			<div id="cse" style="width:100%;"></div> 
+		-->
+		<!--
+		<div id="companyBanner">
+			<img src="../images/company/company_banner_700x100.jpg" alt="">
+		</div>
+		-->
+		<div id="mainContent">
+			<h1>Site Map</h1>
+			<div id="sidetree">
+
+				<div class="treeheader">&nbsp;</div>
+				<div id="sidetreecontrol" style="margin-top:5px; margin-bottom:15px;"> <a href="?#">Collapse All</a> | <a href="?#">Expand All</a> </div>
+
+				<ul class="treeview" id="tree">
+
+					<!-- Home with header & footer ————————————————————— -->
+					<li class="expandable">
+						<div class="hitarea expandable-hitarea"></div>
+						<span><strong>Home</strong></span>
+						<ul style="display: none;">
+								<li><a href="#Netsuite">Login</a> | <a href="#Netsuite">Register</a> | <a href="#Netsuite">My Cart</a> | <a href="#Netsuite">Checkout</a>
+								</li>
+								<li><a href="http://www.facebook.com/VMSInc">Facebook</a> | <a href="http://twitter.com/vmsinc">Twitter</a> | <a href="http://youtube.com/user/VMS">You Tube </a>  
+								</li>
+							</ul>
+					</li>
+					
+					<!-- Patients/Caregivers ———————————————————— -->
+					<li class="expandable">
+						<div class="hitarea expandable-hitarea"></div>
+						<span><strong>Patients/Caregivers</strong></span>
+						<ul style="display: none;">
+								<li></li>
+								<li></li>
+							</ul>
+					</li>
+					
+					<!-- Clinicians ———————————————————— -->
+					<li class="expandable">
+						<div class="hitarea expandable-hitarea"></div>
+						<span><strong>Clinicians</strong></span>
+						<ul style="display: none;">
+								<li></li>
+								<li></li>
+							</ul>
+					</li>
+					
+					<!-- Payors ———————————————————— -->
+					<li class="expandable">
+						<div class="hitarea expandable-hitarea"></div>
+						<span><strong>Payors</strong></span>
+						<ul style="display: none;">
+								<li></li>
+								<li></li>
+							</ul>
+					</li>
+
+					<!-- Products ————————————————————————————————————— -->
+					<li class="expandable">
+
+						<div class="hitarea expandable-hitarea lastExpandable-hitarea"></div>
+						<span><strong>Products</strong></span>
+						<ul style="display: none;">
+
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Modalities</strong></span>
+								<ul style="display: none;">
+			
+									<li class="expandable">
+										<div class="hitarea expandable-hitarea"></div>
+										<span><strong>Clinical Electrotherapy</strong><span>
+										<ul style="display: none;">
+											<li>Accessories</li>
+											<li>Combination</li>
+											<li>Diathermy</li>
+											<li>Electrodes</li>
+											<li>Iontophoresis</li>
+											<li>Lotions & Gels</li>
+											<li>Stim</li>
+											<li>Ultrasound</li>
+										</ul>
+									</li>
+									
+									<li>Continuous Passive Motion</li>
+									<li>Hot & Cold Therapy</li>
+									<li>Hydrotherapy & Aquatics</li>
+									<li>Personal Electrotherapy Devices</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Clinical Products & Supplies</strong></span>
+								<ul style="display: none;">
+									<li>Balance & Stability</li>
+									<li>Clinical Equipment</li>
+									<li>Clinical Supplies</li>
+									<li>Education</li>
+									<li>Hand Therapy</li>
+									<li>Massage Products</li>
+									<li>Pillows & Cushions</li>
+									<li>Resistive Exercise</li>
+									<li>Therapeutic Exercise</li>
+									<li>Topical Analgesics</li>
+									
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Tables & Traction</strong></span>
+								<ul style="display: none;">
+									<li>Massage Tables</li>
+									<li>Mat Tables</li>
+									<li>Personal Traction Devices </li>
+									<li>Positioning Products</li>
+									<li>Traction</li>
+									<li>Treatment Tables</li>
+									<li>Work Tables</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Fitness Equipment</strong></span>
+								<ul style="display: none;">
+									<li>All Body Exercisers</li>
+									<li>Ellipticals</li>
+									<li>Exercise Bikes</li>
+									<li>Treadmills</li>
+									<li>Weight Equipment</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Orthodepic Products & Supplies</strong></span>
+								<ul style="display: none;">
+									<li>Ankle & Foot</li>
+									<li>Back</li>
+									<li>Collars & Slings</li>
+									<li>Elbo</li>
+									<li>Hand & Wrist</li>
+									<li>Knee</li>
+									<li>Shoulder & Arm</li>
+									<li>Splinting</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>ATC & Taping</strong></span>
+								<ul style="display: none;">
+									<li>First Aid</li>
+									<li>Taping & Wrapping</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Evaluation Products</strong></span>
+								<ul style="display: none;">
+									<li>Miscellaneous</li>
+									<li>Pulse Evaluation</li>
+									<li>Range of Motion</li>
+									<li>Sensory Evaluation</li>
+									<li>Strength Evaluation</li>
+									<li>Weight & Edema</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Aids to Daily Living</strong></span>
+								<ul style="display: none;">
+									<li>Mobility</li>
+									<li>Reachers & Daily Aids</li>
+									<li>Seating & Bedding</li>
+								</ul>
+							</li>
+							<li class="expandable">
+								<div class="hitarea expandable-hitarea"></div>
+								<span><strong>Lymphedema & Wound Care</strong></span>
+								<ul style="display: none;">
+									<li>Compression</li>
+									<li>Wound Management </li>
+								</ul>
+							</li>
+
+
+						</ul>
+					</li> <!-- end 'Products' -->
+
+
+					<!-- Company  ————————————————————————————————————— -->
+					<li class="expandable">
+						<div class="hitarea expandable-hitarea lastExpandable-hitarea"></div>
+						<span><strong>Company</strong></span>
+						<ul style="display: none;">
+							<li><%= link_to "Company", 'company#about' %></li>
+							<li><%= link_to "Contact Us", 'company#contact' %></li>
+							<li><%= link_to "News", 'company#news' %></li>
+							<li><%= link_to "FAQs", 'company#faqs' %></li>
+						<!-- 
+							<li><%= link_to "Shipping", 'company#shipping' %></li>
+							<li><%= link_to "Returns", 'company#returns' %></li>
+						-->
+							<li><%= link_to "Home Services", 'company#service' %></li>
+						</ul>
+					</li> <!-- end 'Company' -->
+
+				</ul> <!-- end 'tree' -->
+
+			</div> <!-- end div 'sidetree' -->
+			
+		</div>
+         
+ 	</div><!--end of 'center'-->
+	
+
+<% end %>
+

@@ -1,0 +1,213 @@
+@charset "UTF-8";
+			/* CSS Document */
+			/*  
+                TO DO: [[ ... ]]
+			*/
+
+			 /* ———— reset css styles all browsers   ————— */
+            html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+				margin:0;
+				padding:0;
+				border:0;
+				font-weight:inherit;
+				font-style:inherit;
+				font-size:100%;
+				font-family:inherit;
+				vertical-align:top;
+			}
+
+			*:focus { outline:0;} /* to get rid of blue focus box (in Safari)  */
+					
+			/* ————— page layout: major divs —————————————————————————————————— */	
+   			
+            body { position:relative;
+					min-height:662px; 
+					background-color:white;
+					font-family: Arial, Helvetica, sans-serif; 
+					font-size: 11px; /* TODO: remove redundant declarations from contained divs */
+					color: #999999; /* TODO remove redundant declarations from contained divs */
+            }
+				#wrapper_outer { position:relative;
+					width:1000px; /* 200px left nav plus 800px main 3-way panel */
+					margin-left: auto; margin-right: auto;
+					overflow:hidden; /* makes wrapper_inner grow to contain floated #left */ 
+            	}
+					#leftNav { position:absolute; /* within wrapper-outer; float this once it works */
+						top:140px;
+						left:0px; 
+						min-height:522px;
+						width:175px; /* Force it to be max width */
+						padding:0px;
+						z-index:12;
+					}
+				#wrapper_inner { position:relative; 
+					width:797px; /* just main 3-way panel; 265*3=795 + 2 1px lines=797 */
+					margin-left: 200px; /* leave room for left nav on inner pages */
+					/* background-color:yellow;*/
+					}
+				
+            #header { position:relative; 
+					height:110px; 
+					background-color: white;
+					/* in layouts/application.html.erb instead
+					background-image: url("../images/header/logoMark_400x100.jpg");
+					background-repeat:none;
+					*/
+					z-index:7;
+
+					}
+				#main { position:relative;
+					min-height:542px;
+					width:800px;
+					/* for testing:  background-color:pink; */
+					z-index:5; /* so can see main image; otherwise div 'promo' hiding it.  Fix layout. */
+					overflow:hidden; /* trick to get main to grow down if a div with float:left within it (ie the main image) extends below
+						its default height of 452px — the height of the 3-photo widget on the home page */;
+					}	
+					#left { position: relative;
+						min-height:542px;
+						width:266px;
+						background-color:white;
+						float:left;
+						z-index:6;
+					}
+					#center { position: relative;
+						min-height:542px;
+						width:266px;
+						padding-left:1px;
+						background-color:white;
+						float:left;
+						z-index:6;
+					}
+					#right { position: relative;
+						min-height:542px;
+						width:266px;
+						padding-left:1px;
+						background-color:white;
+						float:left;
+						z-index:6;
+					}
+					#left_center { position: relative;
+						min-height:542px;
+						width:530px;
+						background-color:white;
+						float:left;
+						z-index:6;
+					}
+					#left_center_content {
+						width:490px;
+						height:502px;
+						padding:20px;
+					}
+					#center_right { position: relative;
+						min-height:542px;
+						width:530px;
+						background-color:white;
+						float:left;
+						z-index:6;
+					}
+					#center_right_content {
+						padding:20px;
+					}
+					/*
+					#promo { position:relative; 
+						min-height:70px;
+						background-color:white; 
+						z-index:4;
+					}
+					*/
+				#footer { 
+					position:relative;
+					clear:both;
+					z-index:3;
+					background-color:white;
+					text-align:center;  
+					padding-top:20px;
+					padding-bottom:20px;
+	            }
+					#center {margin-left:0px!important;}
+					#share {padding-top:20px; padding-left:340px;}
+ 
+
+			/* ———— within leftNav  ——————————————————————————————————————— */	
+			
+			/*	insert goodies for formatting the jquery-ui accordion used for 2nd-3rd level navigation */
+			/* or better, put it in jquery.leftNav.js	
+	
+			/* ———— within header  ———————————————————————————————————————— */
+			
+				#logoMark { position:absolute; /* relative to containing div #header */
+					top:2px; /* image is 70px high with text offset to the top; header is 73px high */
+					left:0px; 
+					}
+					 #headerButtons { position:absolute;
+						top:10px;
+						right:8px;
+						}
+					#headerButtons ul {list-style-type:none;}
+					#headerButtons li { display:block; float:left; padding-left:5px; color:#E6E6E6;}
+					#headerButtons li img { height:28px; width:28px;}
+		
+                #headerLinks { position:absolute;
+                    top:35px;
+                    right:0px;
+                    font-size:11px;
+						  text-transform:uppercase;
+                    color:#E6E6E6;
+                    }
+                #headerLinks ul { list-style-type:none;}
+                #headerLinks li { display:block; float:left; padding:14px 10px 10px 0px;}
+					/* DEBUG: raise cart image relative to other items in list  */
+                #headerLinks li a { text-decoration:none; color:#E6E6E6; }
+                #headerLink li a:link { color:#E6E6E6;}
+                #headerLink li a:visited {color:#E6E6E6;}
+                #headerLink li a:hover {color:#dd4b00;} /* orange */
+
+				
+		
+			/* ———— within 'main'  ———————————————————————————————————————— */
+			
+				div#main p { font-size:12px; line-height:18px; margin-bottom:10px; color:#707070; }
+				
+			/* ———— within 'main/left'  ————————————————————————————— */
+            
+            /* ———— within 'main/center'  ——————————————————————————— */
+            
+            /* ———— within 'main/right'  ———————————————————————————— */
+
+				/* ———— with main/center-right' ————————————————————————— */
+				
+				#center_right_content h1 { font-size:24px; font-weight:normal; color: #0093DD;margin-bottom:10px;}
+				#center_right_content h2 { font-size:14px; font-weight:bold; color: black; margin-bottom:5px;}
+				#center_right_content h3 { font-size:12px; font-weight:bold; color: #0093DD; margin-bottom:3px;}
+				#center_right_content p { font-size:12px;line_height:18px;color: gray;}
+				
+
+            		
+			/* ———— within 'promo'  —————————————————————————————————————————————————————————————————— */
+			
+				
+			
+			/* ————  within footer———————————————————————————————————————————*/	
+
+				#footer ul {list-style:none;margin:0; padding:0;}
+				#footer li {display:inline;}
+				#footer a:link,a:visited {font-weight:medium;color:gray;text-decoration:none;font-size:12px;}
+				#footer a:hover,a:active {font-weight:bold;color:#D49253;text-decoration:none;font-size:12px;}
+
+				.addthis_button_compact { text-decoration:none; font-size:11px; color:gray; }
+				
+
+            	
+			/* ———— within popup windows invoked from header/footer  ——————— */
+				/* not used; note these use the popUpWindow js, not jQuery-UI display
+            div.popUpWindow div.content { padding:20px;  } 
+				div.popUpWindow p { font-size:11px; color:#999999; line-height:18px; margin-bottom:10px; }
+				div.popUpWindow h2 { font-size:18px; color: #FF3300; margin-bottom:20px; }
+				div.popUpWindow ul { list-style-type:disc; list-style-position:outside; padding-left:28px; margin-bottom:10px; }
+				div.popUpWindow li { font-size:11px; color:#999999; line-height:18px; padding:0px; margin-top:5px }
+				*/
+			
+	
+			
+	

@@ -1,385 +1,126 @@
-
-
-!--  —————————————————————————————————————————————————————————————————————
+<h1>Company#about</h1>
+<p>Find me in app/views/company/about.html.erb</p>
+<!--  —————————————————————————————————————————————————————————————————————
 			Controller: Company
-			Action:     email_signup  [[ move to User#email_signup]]			
+			Action:     about  
 			——————————————————————————————————————————————————————————————————————
 
-			To Do	
-				1. remove leftNav to a partial
-				2. remove page-specific ccs declarations that relate to leftNav into leftNav.css; include this file in the header
-				3. insert page content
-				4. makes links from page footer go here
+			problems:
+				1. so long that it overruns footer; have it push footer down. 
+
 -->
 
 <!-- header includes  ————————————————————————————————————————————————————  -->
 
-<%= content_for(:page_title) do %>
-	<title>VMS / Lighting / Ballasts </title>
+<% content_for (:controller_specific_css_files) do %>
+	<%= stylesheet_link_tag "leftNav.css" %>
+	<%= stylesheet_link_tag "category.css" %>
+	<link rel="Stylesheet" type="text/css" href="../stylesheets/smoothDivScroll.css" />
+
 <% end %>
 
-<%= content_for(:controller_specific_css_files) do %>
+<% content_for (:controller_specific_js_files) do %>
+
+	<!-- <%= javascript_include_tag "jquery.tools.min.js" %> -->
+	<!-- replace with reference to jquery-ui on Google CDN -->
+	<!-- <script src="http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js"></script> -->
+	<script type="text/javascript" src="../javascripts/jquery.smoothdivscroll.js" ></script>
+	<script type="text/javascript" src="../javascripts/jquery.leftNav.js"></script>
+	
 <% end %>
 
-<%= content_for(:controller_specific_js_files) do %>
-<% end %>
-
-<%= content_for(:controller_specific_jQuery_document_ready ) do %>
+<% content_for (:controller_specific_jQuery_document_ready ) do %>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			
-			$("#nav ul").hide();
-			$("#nav li:has(ul)").each(function() {
-				$(this).children().slideUp(400);
+			/* $(".scrollable").scrollable(); // initialize jquery tools 'scrollable'; consider if have cross browser problems with smoothDivSchroll */
+			$("div#makeMeScrollable").smoothDivScroll({
 			});
-			/*
-			$("li").mouseOver(function(event){	
-				$(this).css("color","red");
-			});
-			*/
-
-			$("li.p1:has(ul)").click(function(event){
-				if (this == event.target) {
-					var current = this;
-					$("#nav li:has(ul)").each(function() {
-						if (this != current) $(this).children().slideUp(400);
-					});
-				$("ul:first", $(this)).slideToggle(400);
-				}
-			});
-
-			$("li.p2:has(ul)").click(function(event){
-				if (this == event.target) {
-					var current = this;
-					$("li.p2:has(ul)").each(function() {
-						if (this != current) $(this).children().slideUp(400);
-					});
-					$("li.p3:has(ul)").each(function() {
-						if (this != current) $(this).children().slideUp(400);
-					});
-					$("ul:first", $(this)).slideToggle(400);
-				}
-			});
-
-			$("li.p3:has(ul)").click(function(event){
-				if (this == event.target) {
-					var current = this;
-					$("li.p3:has(ul)").each(function() {
-						if (this != current) $(this).children().slideUp(400);
-					});
-					$("ul:first", $(this)).slideToggle(400);
-				}
-			});
-			
-
-			$("button", "#newsletter").button();
-
-			$("area").click(function(){
-				alert("Alert: Page not implemented in prototype.");
-				});
 		});	
 	</script>
 	
 <% end %> 
 
-
-<%= content_for(:page_specific_style_declarations) do %> 
-
-	<style type="text/css">	
-		th { text-align:left; font-weight:bold; color:black; }
-		#leftCenterRight table { }
-		#leftCenterRight table > tr > td { vertical-align:middle;}
-	</style>
-	
-	<style type="text/css">
-		.padding {height:300px;}
-		/* #wrap {position:relative; height:200px; width:110px; z-index:100;} */
-		#nav {position:absolute; left:0; top:60px; background-color:#AAAAAA; list-style:none;}
-
-		#nav ul {padding:0; margin:0; list-style:none; font-family:arial, sans-serif; font-weight:medium;}
-		#nav li a {padding-left:10px; white-space:nowrap;} 
-		#nav li a:hover 
-		#nav li ul li a {padding-left:0;}
-
-		#nav ul {padding-left:0px;}
-		#nav li a {color:white; text-decoration:none; font-size:11px !important;}
-		#nav li {font-size:11px !important; line-height:24px; color:white; cursor:pointer; width:100%; padding-left:10px;}
-		#nav li.down {text-indent:10px;}
-
-		#nav li a:hover {background-color: pink; padding:10px;}
-
-	</style>
-
-	<style type="text/css">
-
-		/* ------ within header -------------------------------- */
-
-
-		/* ------- within left column --------------------------- */
-		div#shopByBrand { position: relative; height:70px; width:220px; background-color:#AAAAAA; padding: 10px; margin-bottom:20px; }
-		div#shopByCategory {position:relative; width:220px; background-color:#AAAAAA; padding:10px; height:415px;}
-		#shopByCategory h2, #shopByBrand h2 {font-size:24px; color:#555555; font-weight:medium;}
-		#shopByCategory ul { } 
-		#shopByCategory li {font-size:10px;}
-
-
-		/* -----   within center -------------------------- */
-
-		div#sortBy{  }
-		div#table_of_products {position:relative; width:80%px; background-color:; padding:25px 10px 10px 15px;}
-		th {background-color:gray; color:white;font-weight:500; margin-bottom:10px; height:24px; padding:5px;}
-		td { color: gray; font-size:10px;}
-		#center_content { margin-top:90px;}
-		#center_content h1 { font-size:24px; color:teal; line-height:32px; margin-bottom:20px; }
-		#center_content p { font-size:12px; color:gray; line-height:15px; margin-bottom:10px;}
-		
-		
-
-
-
-
-	</style>
+<% content_for (:page_specific_style_declarations) do %> 
 <% end %>	
 
-  
+
+<!-- leftNav ———————————————————————————————————————————————————————————————— -->
+	
+<% content_for (:leftNav) do %>
+	<!-- 
+		render :partial => 'shared/leftnav' include left nav from a partial template since it is the same in category and item templates
+	-->
+<% end %> 
    
-<!-- #middleBand   ———————————————————————————————————————————————————————————————— -->
    
-<%= content_for(:middleBand) do %> 
-
-
-	<!-- left   ——————————————————————————————————————————————————————————————————— -->
-
+<!-- #main   ———————————————————————————————————————————————————————————————— -->
+   
+<% content_for (:main) do %>  
+   
+	<!-- left  ——————————————————————————————————————————————————————— -->
+	  
 	<div id="left">
-		<div id="shopByBrand">
-			<p>filter by</p>
-	    <h2>brand</h2>
-	    </br>
-	    <select name="brands" style="margin-top:5px;">
-	    	<option value="selectBrand">select brand</option>
-	        <option value="Phillips">Phillips</option>
-	        <option value="GE">GE</option>
-	        <option value="Lumiere">Lumiere</option>
-	    </select>                    
-		</div>
-	
-		<div id="shopByCategory">
-			<p>shop by</p>
-			<h2>category</h2>
-			<!-- <%= render :partial => 'home/leftNav' %> -->
-
-			<ul id="nav">
-			
-				<li class="p1">Lighting
-					<ul>
-						<li class="p2 down">Accessories
-							<ul>
-								<li><a href="#url">Miscellaneous Lighting Accessories</a></li>
-								<li><a href="#url">Wiring Components</a></li>
-							</ul>
-						</li>
-						<li class="p2 down">Ballasts
-							<ul>
-								<li><a href="#url">Compact Flourescent Ballasts</a></li>
-								<li><a href="#url">Flourescent Ballasts</a></li>
-								<li><a href="#url">High Intensity Discharge Ballasts</a></li>
-								<li><a href="#url">Kits</a></li>
-								<li><a href="#url">Miscellaneous Ballasts</a></li>
-								<li><a href="#url">Sign Ballasts</a></li>
-							</ul>
-						</li>
-						<li class="p2 down">Fixtures
-							<ul>
-								<li><a href="#url" rel="unimplemented">Area Lighting</a></li>
-								<li><a href="#url" rel="unimplemented">Directional Fixtures</a></li>
-								<li><a href="#url" rel="unimplemented">Emergency</a></li>
-								<li><a href="#url" rel="unimplemented">Exit Sign </a></li>
-								<li><a href="#url" rel="unimplemented">Fixture Accessories</a></li>
-								<li><a href="#url" rel="unimplemented">Flourescent</a></li>
-								<li><a href="#url" rel="unimplemented">Miscellaneous Fixtures</a></li>
-								<li><a href="#url" rel="unimplemented">Portable Lighting</a></li>
-								<li><a href="#url" rel="unimplemented">Troffer</a></li>
-							</ul>
-						</li>
-						<li class="p2 down">Lamps
-							<ul>
-								<li><a href="#url" rel="unimplemented">Compact Flourescent</a></li>
-								<li><a href="#url" rel="unimplemented">Flourescent</a></li>
-								<li><a href="#url" rel="unimplemented">Halogen</a></li>
-								<li><a href="#url" rel="unimplemented">High Intensity Discharge</a></li>
-								<li><a href="#url" rel="unimplemented">Incandescent</a></li>
-								<li><a href="#url" rel="unimplemented">Lamp Accessories</a></li>
-								<li><a href="#url" rel="unimplemented">LED</a></li>
-								<li><a href="#url" rel="unimplemented">Miscellaneous Lamps</a></li>
-								<li><a href="#url" rel="unimplemented">Projection</a></li>
-								<li><a href="#url" rel="unimplemented">Recycling</a></li>
-								<li><a href="#url" rel="unimplemented">Sensors</a></li>
-								<li><a href="#url" rel="unimplemented">Starters</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				
-				<li>Abrasives</li>
-				<li>Adhesives</li>
-				<li>Chemicals</li>
-				<li>Electrical Components</li>
-				<li>Foundry Supplies</li>
-				<li>Hardware</li>
-				<li>HVAC</li>
-				<li>Janitorial Supplies</li>
-				<li>Material Handling</li>
-				<li>Metals</li>
-				<li>OEM Spares</li>
-				<li>Office Furniture</li>
-				<li>Plumbing</li>
-				<li>Others ...</li>
-			</ul>
-	
-		</div>
-	</div><!-- end 'left' -->
-	
-	<!-- center  ———————————————————————————————————————————————————————————— -->
-	
-	<div id="center">
-		<!-- for results from Google site search
-			<div id="cse" style="width:100%;"></div> 
-		-->
-		<div id="center_content">
-			
+		<%= image_tag "patients/patients_photo_2.jpg" %>
+ 	</div>
+         
+  <!-- centerRight  ————————————————————————————————————————————————————— -->
+     
+  <div id="center_right" style="z-index:7;">
+		
+		<div id="center_right_content">
 			<h1>Frequently Asked Questions</h1>
-					<p>Our Frequently Asked Questions are constantly evolving, so if your question(s) are not addressed here, please <%= link_to "contact us", { :controller => 'company', :action => 'customer_service' } %>. We look forward to the opportunity to serve you!</p>
+			<h1>FAQs</h1>
+						<p>Our Frequently Asked Questions are constantly evolving, so if your question(s) are not addressed here, please <%= link_to "contact us", { :controller => 'company', :action => 'contact' } %>. We look forward to the opportunity to serve you!</p>
 
-					<h2>PRODUCTS:</h2>
+				<h2>PRODUCTS:</h2>
 
-					<h3>What is a Vendor Managed Solution?</h3>
-					<p>Vendor Managed Solutions, the Original Multifunctional Headwear; it’s the product that started the seamless, multifunctional headwear revolution. First developed in 1992 by founder and creator, Joan Rojas. Performance head and neckwear designed to morph into a multitude of different garments in seconds, allowing its wearer to change their headwear on the fly while offering protection from the elements during a wide range of outdoor activities and sports.
+				<h3>Question 1</h3>
+				<p>	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non bibendum ipsum. Phasellus posuere, diam vel tempor mattis, ligula dolor blandit erat, id sollicitudin elit massa eu enim. Phasellus vitae ligula quis dui faucibus iaculis. Vivamus et massa diam. Donec aliquet tellus vel lacus iaculis hendrerit. Donec a massa in nunc dapibus posuere. Aliquam et sapien eu risus tristique vestibulum. Morbi vestibulum sollicitudin pellentesque. In ac metus at risus bibendum vulputate ut eget leo. Donec elit diam, interdum vel volutpat sit amet, tempus in turpis.</p>
 
-					<h3>How is Vendor Managed Solutions headwear made?</h3>
-					<p>Vendor Managed Solutions headwear is created through a proprietary knitting process using a special 100% polyester yarn called microfiber, in which the thinness of each filament is less than 1 dtex. The pores on the external surface of the textile become very small to prevent water and wind from passing through the fabric, but simultaneously ensure that the pores on the inside surface are big enough to make the fabric highly breathable.
-			</p>
-					<h3>How do I wash my Vendor Managed Solutions ?</h3>
-					<p>Vendor Managed Solutions® headwear and gloves are machine washable. Do not machine dry. Because of their quick-drying fabric, you can simply place the product on top of the dryer or lay flat to dry.  Do not use fabric softener as is clogs the textile’s pores.  Do not dry clean. Do not bleach and only use mild soap. Do not iron.
-			</p>
-					<h3>Why does my Vendor Managed Solutions pill creating little lint-like balls of fiber?</h3>
-					<p>This happens due to the headwear being seamless.  After washing the product a few times, the pilling with start to diminish and will stop naturally. Heavy facial hair when wearing the product over the nose and mouth can also cause excess pilling. 
-			</p>
-					<h3>Because my Vendor Managed Solutions® is seamless, will its edge unravel?</h3>
-					<p>No, the edge will not unravel, but slight pilling before its first laundering may occur.  After washing the product a few times, the edge will naturally seal itself.
-			</p>
-					<h3>What is Polygiene® active odor control?</h3>
-					<p>Polygiene® technology is integrated into every piece of Vendor Managed Solutions® headwear to keep you fresh in action (except the Wool Vendor Managed Solutions® and Gloves). Silver ions prevent the growth of odor-causing bacteria. Polygiene® is only applied to the microfiber/Coolmax® fabric of any Vendor Managed Solutions® product, not to any product with fleece. For more information please visit the <a href="http://www.polygiene.com">Polygiene® </a> website.
-			</p>
-					<h3>What is Insect Shield®?</h3>
-					<p>Insect Shield® technology is integrated into our Insect Shield® UV Vendor Managed Solutions® headwear line and repels many biting insects, including: mosquitoes, ticks, ants, flies, chiggers and midges (no-see-ums). It is odorless, invisible and lasts 70 washings. Its active ingredient is a man-made version of a natural insect repellent found in certain types of chrysanthemum plants. EPA Registration No. 74843-2 Please visit the  <a href="http://www.insectshield.com">Insect Shield® </a>website for additional information. 
-			</p>
-					<h3>What is GORE Windstopper®?</h3>
-					<p>Windstopper® high-performance products block the fiercest wind, rain and cold and are constructed by laminating GORE®’s special membrane to functional fabrics like microfiber or fleece. Windstopper®’s membrane is also durable and water-repellent. Please visit the <a href="http://www.windstopper.com"> GORE Windstopper®</a> website for more information. 
-			</p>
-					<h3>What is Polartec® microfleece and what makes it better than generic fleece polyester?</h3>
-					<p>Polartec® fleece is made from 100% polyester velour fabric and provides the warmth without the weight by trapping air to retain body heat. It’s highly breathable, durable, machine washable and dries quickly. Unlike generic fleece, Polartec® fleece maintains its insulating ability and non-pilling appearance after repeated launderings. For additional information, please visit <a href="http://www.polartec.com/warmth/polartec-classic">Polartec®’s </a>website.
-			</p>
-					<h3>What is Coolmax® fabric?</h3>
-					<p>Coolmax® is a highly technical, four-channel fiber that forms a transport system, which pulls moisture away from the skin to the outer layer of the fabric. It then dries that moisture faster than any other fabric and thermoregulates the body. Please visit the <a href="http://coolmax.invista.com"> Coolmax® </a>website for more information.
-			</p>
-					<h3>What is the difference between microfiber and Coolmax®?</h3>
-					<p>Coolmax® is a more technical, four-channel fiber with advanced moisture wicking capabilities compared to basic microfiber. Coolmax® also provides certified UV protection, blocking 95% of UV rays and is a bit softer to the touch compared to basic microfiber.
-			</p>
-					<h3>What is the UPF rating for the UV Vendor Managed Solutions®?</h3>
-					<p>The UV Vendor Managed Solutions® averages a UPF of 20+. It has been tested for UV protection by AITEX and LEITAT – Textile Technology Institutes in accordance with the standard AS/NZS4399:1996 “Sun protective clothing – Evaluation and Classification”, results ranged from 93.3% to 96.7%, averaging 95% UV protection. 
-			</p>
-					<h3>What factors allow the fabric block UV rays?</h3> 
-					<p>Factors that contribute to UPF ratings are: composition of the yarns (polyester), tightness of the weave/knit (tighter the weave the more UV blocked), color (darker colors block more UV), stretch (more stretch lowers UPF rating), moisture (lower rating when wet), condition (worn/faded garments have reduced rating) and finishing (some fabrics are treated with UV absorbing chemicals).
-			</p>
-					<h3>What is “technical fibers/fabric”?</h3>
-					<p>Technical fabrics are high-performance fabrics designed and marketed mainly for sportswear and sporting goods.
-			</p>
-					<h3>What is “moisture wicking” and why is it so important?</h3>
-					<p>Moisture wicking relates to synthetic materials that have been developed specifically to channel perspiration away from the skin. Any moisture that can be moved away from the skin will keep you dry and comfortable while active.
-			</p>
-					<h3>What is breathability and why is it so important when outdoors?</h3>
-					<p>Breathable garments have pores that allow the moisture to escape, keeping you comfortable. If moisture is allowed to build up in your clothing, it becomes damp and once you stop moving the dampness draws heat away, causing your body to cool down very quickly. This can be dangerous in cold weather in the outdoors.
-			</p>
-					<h3>Where is the 100% natural Merino Wool from?</h3>
-					<p>Australia</p>
+				<h3>Question 2</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non bibendum ipsum. Phasellus posuere, diam vel tempor mattis, ligula dolor blandit erat, id sollicitudin elit massa eu enim.
+				</p>
+				<h3>Question 3</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non bibendum ipsum. Phasellus posuere, diam vel tempor mattis, ligula dolor blandit erat, id sollicitudin elit massa eu enim. Phasellus vitae ligula quis dui faucibus iaculis.
+		</p>
+				<h3>Question n?</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non bibendum ipsum. Phasellus posuere, diam vel tempor mattis, ligula dolor blandit erat, id sollicitudin elit massa eu enim. Phasellus vitae ligula quis dui faucibus iaculis.
+				</p>
+				
+				<h2>ORDERING:</h2>
 
-					<h3>What are Vendor Managed Solutions’s certifications?</h3>
-					<ol>
-						<li>OEKO-TEX Standard 100 (Category I and II): Certifies the goods that meet the human-ecological requirements of the standard for products with direct contact to skin.</li>
-						<li>ISO 9001: Specifies requirements for a quality management system.</li> 
-						<li>ISO 14001: Specifies requirements for an environmental management system.</li>
-						<li>UV Protection: Samples of fabrics have been tested for UV protection by AITEX and LEITAT - Textile Technology Institutes in accordance with the standard AS/NZS4399:1996 "Sun protective clothing – Evaluation and Classification" , results ranged from 93.3% to 96.7%, averaging 95% UV protection.</li>
-					</ol>
+				<h3>Do you ship to P.O. boxes and military APO/FPO addresses?</h3>
+				<p>We cannot ship to P.O. boxes due to our carrier being FedEx. As long as military addresses accept Fedex shipments, we can ship there.</p>
 
-					<h3>Will my Vendor Managed Solutions stretch too much and lose its shape?</h3>
-					<p>No, Vendor Managed Solutions headwear will maintain its shape due to its two-way lateral stretch.</p>
+				<h3>What happens when I have a back-ordered item?</h3>
+				<p>Our online store will not allow you to purchase an out-of-stock item.  If you would like to know approximate availability of that item, please contact <%= link_to "Customer Service", { :controller => 'company', :action => 'contact' } %>.</p>
 
-					<h3>Is there only one size of Vendor Managed Solutions® headwear?</h3>
-					<p>No, there is an adult size that fits most adults, a junior size for the Junior Vendor Managed Solutions®/Junior Polar Vendor Managed Solutions® that fits kids 4-11 years old, and two Dog Vendor Managed Solutions® sizes that fit most dogs.</p>
+				<h3>Which credits cards do you accept online?</h3>
+				<p>Visa, Mastercard, American Express</p>
 
-					<h3>What are the exact dimensions of each Vendor Managed Solutions® headwear product?</h3>
-					<p>The general size of Vendor Managed Solutions® headwear’s tubular, all-weather products is 20” long x 9.5” wide when laid flat (Original Vendor Managed Solutions®, UV Vendor Managed Solutions®). All headbands, Dog Vendor Managed Solutions®, Slim Fit Vendor Managed Solutions®, Junior Vendor Managed Solutions® and cold-weather products vary in size due to the nature of these products.
-			</p>
-					<h3>How is Vendor Managed Solutions® headwear seamless and what are the benefits of it being seamless?</h3>
-					<p>Vendor Managed Solutions® headwear is made with special knitting machines that weave in a tubular manner creating a unique product without no irritating seams or hems.
-			</p>
-					<h3>What do you mean by “semi-seamless”?</h3>
-					<p>Most of our semi-seamless products combine a section that is seamless with a section that has been sewn to another type of fabric, like fleece or GORE Windstopper® in our cold-weather product models. The Wool Vendor Managed Solutions® is semi-seamless because it does not have a vertical seam, rather it’s sewn on the top and bottom to prevent unraveling. The Headband Vendor Managed Solutions® is also semi-seamless because it has a double layer of Coolmax® fabric sewn together on the inside of the headband.
-			</p>
+				<h3>Is sales tax assessed to my order?</h3>
+				<p>Yes, you will see amount assessed for sales tax when you go to checkout at our online store.</p>
 
-					<h2>ORDERING:</h2>
+				<h3>Do you ship internationally?</h3>
+				<p>Tru-Medical, Inc. does not ship internationally. </p>
 
-					<h3>Do you ship to P.O. boxes and military APO/FPO addresses?</h3>
-					<p>We cannot ship to P.O. boxes due to our carrier being FedEx. As long as military addresses accept Fedex shipments, we can ship there.</p>
+				<h2>SUPPORT:</h2>
 
-					<h3>What happens when I have a back-ordered item?</h3>
-					<p>Our online store will not allow you to purchase an out-of-stock item.  If you would like to know approximate availability of that item, please contact <%= link_to "Customer Service", { :controller => 'company', :action => 'customer_service' } %>.</p>
+				<h3>Does Tru-Medical, Inc. have a catalog?</h3>
+				<p>Yes, you can access our catalogs and brochures from our <%= link_to "Downloads page", { :controller => 'company', :action => 'downloads' } %>. Tru-Medical, Inc. has catalogs for the following: </p>
 
-					<h3>Which credits cards do you accept online?</h3>
-					<p>Visa, Mastercard, American Express</p>
+				<h3>Where can I find more details on Home Services</h3>
+				<p>Please <%= link_to "contact us", { :controller => 'company', :action => 'contact' } %> for information pertaining to this program.</p>
 
-					<h3>Is sales tax assessed to my order?</h3>
-					<p>Yes, you will see amount assessed for sales tax when you go to checkout at our online store.</p>
-
-					<h3>Do you ship internationally?</h3>
-					<p>Vendor Managed Solutions, Inc. does not ship internationally. Please order from corresponding distributor abroad. <a href="http://www.buff.eu/en/USA/buffAlMon">Vendor Managed Solutions in the world.</a></p>
-
-					<h2>SUPPORT:</h2>
-
-					<h3>Does Vendor Managed Solutions, Inc. have a catalog?</h3>
-					<p>Yes, you can access our catalogs and brochures from our  %>. Vendor Managed Solutions, Inc. has catalogs for the following collections: Fall/Winter, Spring/Summer and Fishing/Hunting.</p>
-
-					<h3>Where can I find more details on your Custom Vendor Managed Solutions® Program?</h3>
-					<p>Please visit our <a href="#">Customized Vendor Managed Solutions® </a>page for information pertaining to this program.</p>
-
-					<h3>What is your warranty?</h3>
-					<p>Vendor Managed Solutions, Inc. is proud to design, create manufacture all Vendor Managed Solutions headwear products in-house at our facility in Spain, which allows us to constantly and continually improve upon our product offerings and provide the best service. If you are not satisfied with one of our products at the time you receive it, or if it does not perform to your approval, please return it to us for a full refund or exchange. Please visit <%= link_to "Shipping & Returns", { :controller => 'company', :action => 'customer_service' } %> for more information.</p>
-
-					<h3>What is your privacy policy?</h3>
-					<p>Please visit our <%= link_to "Privacy & Security page", { :controller => 'company', :action => 'privacy_policy' } %>.</p>
-
-					<h3>Where can I find a local store that carries Vendor Managed Solutions® products?</h3>
-					<p>Please visit our <a href="#">Dealer Locator </a>page to find a store near you.</p>
-
-					<h3>How do I remove myself from your mailing list?</h3>
-					<p>Please visit our <%= link_to "Privacy & Security", { :controller => 'company', :action => 'privacy_policy' } %> page for information on how to remove yourself from our mailing list.</p>
+				<h3>What Warrantee does TruMedical offer?</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non bibendum ipsum. Phasellus posuere, diam vel tempor mattis, ligula dolor blandit erat, id sollicitudin elit massa eu eni.</p>
+				<p> Please visit <%= link_to "Returns", { :controller => 'company', :action => 'returns' } %> for more information.</p>
 
 
-					<h3>How do I contact Vendor Managed Solutions, Inc.?</h3>
-					<p>Please visit our <%= link_to "Contact Us", { :controller => 'company', :action => 'customer_service' } %> page.</p>
+		</div> <!-- end div 'center_right_content' -->
+  </div><!-- end div 'center_right' -->
+ 
 
-					<h3>Why is our competitor’s multifunctional headwear generally less expensive?</h3>
-					<p>Vendor Managed Solutions, Inc. is proud to design, create manufacture all Vendor Managed Solutions  headwear products in-house at our facility in Spain, whereas the majority of our competitor’s products are all made in China. Having everything under one roof, allows us to thoroughly check the quality through all facets of the production process. Several certificates prove the quality of our products and processes (see certificates above). The type of materials that our competitors use are less expensive due to being substantially lower in quality, even though they claim to use microfibers. Most competitors do not invest in research & design, art or marketing departments specifically dedicated to the seamless, multifunctional headwear category. Additionally, most competitors do not partner with top-notch textile companies, such as: Coolmax®, Polartec®, Windstopper®, etc., which drastically lowers the quality of their product offerings. We are completely confident that consumers recognize our superior quality and the added value that Vendor Managed Solutions products provide.</p>
-
-					<h3>How do I know that I bought an Original Vendor Managed Solutions product vs. some competitor’s product?</h3>
-					<p>All Vendor Managed Solutions products always have at least one Vendor Managed Solutions logo printed or an embroidered Vendor Managed Solutions logo tag sewn onto the garment.</p>
-	
-		</div> <!-- end div 'center_content' -->
-	      
- 	</div><!--end of 'center'-->
-	
 
 <% end %>
-
-

@@ -1,5 +1,12 @@
 Tmror::Application.routes.draw do
  
+  get "clinicians/show"
+  get "patients/show"
+  get "payors/show"
+  get "products/show"
+  
+  get "site/sitemap"
+
   resources :users
 
   resources :products
@@ -20,7 +27,9 @@ Tmror::Application.routes.draw do
 
   get "company/terms"
 
-  get "company/service"
+  get "company/services"
+  
+  get "company/downloads"
   
   get "home/index"
   

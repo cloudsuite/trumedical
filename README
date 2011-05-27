@@ -8,7 +8,7 @@ If you got here, you probably gave your browser the url:
 
 If you want to get to the home page of the site (home#index, as defined as 'index' in the routes.rb file) type the folioing URL into your web browser: 
 
-	http://trumedical.heroku.com/index
+	http://trumedical.heroku.com/home/index
 
 
 

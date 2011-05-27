@@ -18,6 +18,8 @@ Tmror::Application.routes.draw do
   get "company/contact"
 
   get "company/faqs"
+  
+  get "company/news"
 
   get "company/shipping"
 

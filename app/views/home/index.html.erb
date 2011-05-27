@@ -6,8 +6,9 @@
 		  Doc:	home page alternative 1: migrated from sites/trumedical/wpp_index.html
 				 				
 			Known Bugs/fixes 
-					1. alignment of share this in footer: had it fixed; what did I change now? 
-					2. when fixed this, that also fixed shop-Now banner/button above it. 
+					1. If you start at the home page and click to clinicians, it works. However, if you go from the home page to clinicians and then back to the home page by clicking the logoMark in the upper left corner of the clinicians page, and then try to follow the link from the home page to the patients page you get a Routing Error:  No routes matches "/home/patients/show".  WHY? 
+					2. alignment of share this in footer: had it fixed; what did I change now? 
+					3. when fixed this, that also fixed shop-Now banner/button above it. 
 			  page-specific css:
 					1. refactor this; stuff that applies to all pages, move into tm1_base.css
 				header:
@@ -88,16 +89,55 @@
 
 			#header {position:relative; margin-left:80px; height:100px;}
 			#logoMark { position:absolute; top:0px; left:0px;}
+			
+			button#add_to_cart_button{ 
+					width:85px;
+					padding:4px 2px 4px 2px;
+					font-size:11px;
+					font-weight:bold;
+					line-height: 15px;
+					margin-top:20px;
+					margin-left:0px;
+					text-align:center;
+					font-family: inherit;
+					color: white;
 
-			div#shopNow{
+					background-color: orange; 
+					border:none;
+					border-radius: 2px;
+					-moz-border-radius: 2px;
+					-webkit-border-radius: 2px;
+				}
+			
+			div#shopNowTop{
+				position:absolute;
+				top:10px;
+				right:40px;
 				min-height:100px;
 				width:120px;
-				background-color: pink;
-				color:white;
-				font-size:24px;
-				margin-left:650px;
+				background-color:#FFFF99; /* TruMedical blue:#0094DE */
+				border-radius: 4px;
+				-moz-border-radius: 4px;
+				-webkit-border-radius: 4px;
+				
+				box-shadow: 5px 5px 5px gray;
+				-moz-box-shadow: 5px 5px 5px gray;
+				-webkit-box-shadow: 5px 5px 5px gray;
 				}
-				#shopNow p {font-size:24px; color:white; padding: 30px 10px 30px 30px }
+				#shopNowTop p {font-size:20px; color:gray; font-weight: bold; padding: 30px 10px 30px 30px }
+
+			div#shopNow{
+				display:none;
+				min-height:100px;
+				width:120px;
+				background-color: blue;
+				margin-left:720px;
+				border:solid medium red;
+				border-radius: 4px;
+				-moz-border-radius: 4px;
+				-webkit-border-radius: 4px;
+				}
+				#shopNow p {font-size:20px; color:white; font-weight:bold; padding: 30px 10px 30px 30px }
 
 			div#banner { position: relative;
 				min-height:100px;
@@ -149,7 +189,12 @@
 		</ul>
 	</div>
 
-	<!-- show now banner   ————————————————————————————————————————————————————— -->
+	<!-- 'Shop Now!' banner (below widget: set to display: none)  —————————————— 
+		A replacement button is now above the widget.  Oddly, it is in the
+		layout file for the home page, home.html.erb, while the css for styling
+		it (class showNowTop ) is still in this file. Put them in one place or
+		the other.
+	-->
 
 	<div id="banner">
 		<div id="shopNow">

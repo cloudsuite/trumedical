@@ -1,17 +1,15 @@
 Tmror::Application.routes.draw do
- 
-  get "products/shop"
 
+  get "products/shop"
+  
   get "clinicians/show"
   get "patients/show"
   get "payors/show"
+  get "site/sitemap"
   
   get "products_ilc_page/show"
   get "products_llc_page/show"
-  get "product_page/show"
-  
-  get "site/sitemap"
-  
+
   get "products_llc_page/accessories"
   get "products_llc_page/combination"
   get "products_llc_page/diathermy"
@@ -21,6 +19,7 @@ Tmror::Application.routes.draw do
   get "products_llc_page/stim"
   get "products_llc_page/ultrasound"
 
+  get "product/show"
   
   
 

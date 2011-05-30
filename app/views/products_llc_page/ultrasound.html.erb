@@ -4,6 +4,13 @@
 
 			——————————————————————————————————————————————————————————————————————
 			ToDo:
+						0.keep track of changes made to this file, so can back-map them to 
+						products_11c_page#show
+							line 90: add-to-cart-button margin-top:5 (vs 20)
+							line 150: reference to product image
+							line 157: link from icon in table to page for associated product
+							line 158: number_to_currency for showing price 
+							line 160: remove padding-top on add-to-cart button in td
 						1	Insert cart / checkout to header: see vms_base.css for styles
 						2.Add quantity-ordered field to each row
 						3.Get images working
@@ -18,6 +25,7 @@
 						9.Assemble image references 
 						10. Remove scrollable from jQuery document ready, and javascript includes
 						11. Format the price field: see BUFFROR collections#display
+						12. post-pend p.image_url onto variable passed to image_tag, rather than current hard-wired reference to a specific image in /products/modalities/electrotherapy/ultrasound
 						
 						——————— after seeing initial version: —————————————————————————
 						1. left nav:  higher [DONE]
@@ -33,6 +41,7 @@
 						10. define a route /ultrasound that gets Bill there
 						11. Figure out how to have items in left-nav open when go to a LLC page.
 						12. Figure out how to use HTML5 text to overlay vertical text in Impact font? vs composing one image for each of the leaf-level categories?
+						13. make table wider — use more of the 800px available
 						
 			Errors:
 						1.Find in controller is returning more than just ultrasound
@@ -69,23 +78,22 @@
 <% content_for (:page_specific_style_declarations) do %> 
 	<style type="text/css">
 		#center_right_content h1 {color:#DC8758;}
-		div#table_of_products {position:relative; width:80%px; background-color:; padding:0px 00px 10px 0px; margin-top:-10px;}
+		div#table_of_products {position:relative; width:100%; background-color:white; padding:0px 0px 10px 0px; margin-top:-20px;}
 		th {background-color:#AAAAAA; color:white;font-weight:500; margin-bottom:10px; height:24px; padding:5px;}
 		td { color: gray; font-size:10px;}
 		#center_right_content h1 {color:#DC8758;}
-		button#add_to_cart_button{ 
+		button#add_to_cart_button { 
 				width:85px;
 				padding:4px 2px 4px 2px;
 				font-size:11px;
 				font-weight:bold;
-				line-height: 15px;
-				margin-top:20px;
+				line-height:15px;
+				margin-top:4px; /* Used on Product page, but not here: would push button down in cell */;
 				margin-left:0px;
 				text-align:center;
-				font-family: inherit;
-				color: white;
-			
-				background-color: orange; 
+				font-family:inherit;
+				color:white;
+				background-color:orange; 
 				border:none;
 				border-radius: 2px;
 				-moz-border-radius: 2px;
@@ -125,8 +133,8 @@
 			<div id="table_of_products">
 				<table cellspacing=10 >
 					<tr>
-						<col style="width:100px"></col>
-						<col style="width:120px;"> </col>
+						<col width="100px"></col> <!-- col attributes having no effect. Why? -->
+						<col width="200"> </col>
 						<col align="left"> </col> 
 						<col align="left"> </col>
 						<col align="left"> </col>
@@ -145,14 +153,15 @@
 					
 					<% @products.each do |p| %>
 					<tr>
-						<td><img src=<%= "../images/products/modalities/eletrotherapy/ultrasound/"+ p.image_url %> width=50 height=50></td>
-						<td style="padding-top:5px;width:60px!important"><%= p.tms_part_no %></td>
+						<td><img src=<%= "../images/products/modalities/electrotherapy/ultrasound/"+ "dynatron125_260x260.jpg" %> width=50 height=50></td>
+						<td style="padding-top:5px;"><%= p.tms_part_no %></td>
 						<td style="padding-top:5px;"><%= p.description   %></td>
 						<!-- <td style="padding-top:5px;"><Q= p.manufacturer  %><br/><br/><Q= p.manufacturers_part_number %></td> -->
 						<td style= "padding-top:5px;text-align:right!important;"><%= p.sale_units %></td>
-						<td style= "padding-top:5px;text-align:right!important;"><%= p.price_clinic %></td>
-						<td valign="top"><a href="javascript:gotoItem('<%= p.id %>')"><img src="../images/products/icon_3.jpg"></a></td>
-						<td style="padding-top:10px;"><button id="add_to_cart_button" class="disabled">Add-to-Cart</button></td>
+						<td style= "padding-top:5px;text-align:right!important;"><%= number_to_currency(p.price_clinic) %></td>
+						<td valign='top'><%= link_to( image_tag('products/icon_3.jpg'), {:controller => 'product', :action => 'show'}) %></td>
+						<!-- <td valign="top"><a href="javascript:gotoItem('<Q= p.id %>')"><img src="../images/products/icon_3.jpg"></a></td> -->
+						<td valign="top"><button id="add_to_cart_button" class="disabled">Add-to-Cart</button></td>
 					</tr>
 					<% end %>
 

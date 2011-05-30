@@ -11,7 +11,7 @@
 			}
 		#searchBy { position:absolute; 
 			left:20px; top:0; 
-			font-size:14px; font-weight:medium; color: #dd4b00; /* vs 'orange' bold */
+			font-size:14px; font-weight:normal; color: #dd4b00; /* vs 'orange' bold */
 			}
 		
 		#nav {position:absolute; left:0; top:00px;
@@ -25,7 +25,7 @@
 		#nav li { 
 			font-size:12px; /* prefer to make this 12px, but will have to make column wider first */
 			color:#606366; /* a dark gray #606366*/
-			font-weight:bold;
+			font-weight:normal;
 			line-height:2em; 
 			cursor:pointer;
 			}
@@ -50,7 +50,7 @@
 			font-weight:bold;
 			
 			} 
-		#nav li.p2 {color:gray; font-weight:medium; font-size:11px; padding-left:10px;} 
+		#nav li.p2 {color:gray; font-weight:normal; font-size:11px; padding-left:10px;} 
 		#nav li.down {text-indent:00px;}	
 		#nav li a:hover {text-decoration:underline;}	
 		#nav li li li a:hover { background-color:#0094DE; color:white;}

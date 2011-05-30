@@ -20,6 +20,7 @@
 	Known Bugs:	
 		1. footer not formatting correctly: pick up code from layouts/home
 		2. center section 2 px too narrow: not full 800
+		3. Why is root_path undefined?  :root declaration in routes.rb not taking? 
 
 	-->
 
@@ -79,7 +80,7 @@
 			<div id="header">
 
 				<div id="logoMark">
-					<%= link_to image_tag("/images/header/logoMark_400x100.jpg"), :controller => 'home', :action => 'index' %>
+					<%= link_to image_tag("/images/header/logoMark_400x100.jpg"), {:controller => 'home', :action => 'index'} %>
 				</div> 
 				<div id="headerButtons"></div>
 				<div id="headerLinks"></div>

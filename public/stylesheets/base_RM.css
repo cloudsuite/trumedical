@@ -146,20 +146,59 @@
 					#headerButtons li { display:block; float:left; padding-left:5px; color:#E6E6E6;}
 					#headerButtons li img { height:28px; width:28px;}
 		
-                #headerLinks { position:absolute;
-                    top:35px;
-                    right:0px;
-                    font-size:11px;
-						  text-transform:uppercase;
-                    color:#E6E6E6;
-                    }
-                #headerLinks ul { list-style-type:none;}
-                #headerLinks li { display:block; float:left; padding:14px 10px 10px 0px;}
-					/* DEBUG: raise cart image relative to other items in list  */
-                #headerLinks li a { text-decoration:none; color:#E6E6E6; }
-                #headerLink li a:link { color:#E6E6E6;}
-                #headerLink li a:visited {color:#E6E6E6;}
-                #headerLink li a:hover {color:#dd4b00;} /* orange */
+               #headerLinks { position:absolute;
+                   top:35px;
+                   right:0px;
+                   font-size:11px;
+					  text-transform:uppercase;
+                   color:#E6E6E6;
+                   }
+               #headerLinks ul { list-style-type:none;}
+               #headerLinks li { display:block; float:left; padding:14px 10px 10px 0px;}
+				/* DEBUG: raise cart image relative to other items in list  */
+               #headerLinks li a { text-decoration:none; color:#E6E6E6; }
+               #headerLink li a:link { color:#E6E6E6;}
+               #headerLink li a:visited {color:#E6E6E6;}
+               #headerLink li a:hover {color:#dd4b00;} /* orange */
+					#checkout_button {
+						width:60px;
+						padding:2px 3px 4px 3px;
+						font-size:10px;
+						line-height: 15px;
+						margin-top:-4px!important;
+						margin-left:2px;
+						font-family: inherit;
+						color: white;
+						/* text-shadow: 0 1px 2px #FFFFFF; */
+						background-color: orange; /* rust color D68533 */
+						border:none;
+						border-radius: 2px;
+						-moz-border-radius: 2px;
+						-webkit-border-radius: 2px;
+					}
+					#search_button { position:absolute;
+						width:60px;
+						padding:2px 0px 4px 3px;
+						font-size:10px;
+						line-height: 15px;
+						margin-top:-2px;
+						margin-left:2px;
+						font-family: inherit;
+						color: white;
+						/* text-shadow: 0 1px 2px #FFFFFF; */
+						background-color: orange; /* rust color D685333*/
+						border:none;
+						border-radius: 2px;
+						-moz-border-radius: 2px;
+						-webkit-border-radius: 2px;
+					}
+					#searchBox { display:inline; 
+						width:120px;
+						line-height:18px;
+						border:solid thin gray;
+						background-color:white;
+						}
+					#searchButton {display:inline; margin-left:5px;}
 
 				
 		

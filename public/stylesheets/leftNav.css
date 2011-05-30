@@ -6,15 +6,15 @@
 			height:200px;  
 			z-index:100; 
 			padding:0px 10px 10px 0px;
-			margin-top:30px; /* was 56px when had shop by Product/Activity/Sex */
+			margin-top:0px; 
+			margin-left:0px;
 			}
 		#searchBy { position:absolute; 
 			left:20px; top:0; 
 			font-size:14px; font-weight:medium; color: #dd4b00; /* vs 'orange' bold */
 			}
 		
-		#nav {
-			position:absolute; left:0; top:20px;
+		#nav {position:absolute; left:0; top:00px;
 			background-color:transparent;
 			}
 		#nav ul {
@@ -22,30 +22,39 @@
 			font-family:arial, sans-serif; 
 			background-color:transparent; 
 			}
-		#nav li { line-height:2em; cursor:pointer;}
+		#nav li { 
+			font-size:12px; /* prefer to make this 12px, but will have to make column wider first */
+			color:#606366; /* a dark gray #606366*/
+			font-weight:bold;
+			line-height:2em; 
+			cursor:pointer;
+			}
+		#nav li:last-child { margin-bottom:10px;}
 		
-		#nav li.product {
-			padding-left:10px;
-			font-size: 14px; font-weight:medium; color:#dd4b00; /* vs 'oranage' bold */
+		#nav li li{
+			padding-left:15px;
+			font-size: 11px; color:gray;
 			}
-		#nav li.topLevel {
-			padding-left:0px; margin-left:0px;
-			font-size:14px; font-weight:medium; color:#dd4b00; /* vs 'orange'  bold*/
+		#nav li li li {
+			padding-left:15px;
+			font-size:11px; color:#0094DE; /* #00aeef */
 			}
-		#nav li.topLevelFirst { 
-			margin-top:20px!important; /* DEBUG: why not working? */
-			}
+		
 		#nav li a {
-			padding-left:10px; 
+			padding:10px 10px 10px 10px;
+			background-color:orange;
+			color:white; 
 			white-space:nowrap; 
-			color:white;
 			text-decoration:none;
-			font-size:12px;
-				} 
-		#nav li ul li a {padding-left:15px;}
-		#nav li.p2 {color:white; font-weight:medium; font-size:12px; padding-left:15px;} /* vs bold */
-		#nav li.down {text-indent:20px;}	
+			font-size:11px;
+			font-weight:bold;
+			
+			} 
+		#nav li.p2 {color:gray; font-weight:medium; font-size:11px; padding-left:10px;} 
+		#nav li.down {text-indent:00px;}	
 		#nav li a:hover {text-decoration:underline;}	
-		#nav hr { border-color:#dd4b00; width:120px; margin-left:10px;} /* vs 'orange' */
+		#nav li li li a:hover { background-color:#0094DE; color:white;}
+		
+		#nav hr { border-color:blue; width:120px; margin-left:10px;} /* vs 'orange' */
 		
 		/* .selected { color:black!important;}  block for now; do it in javascript within jquery.leftNav.js?*/

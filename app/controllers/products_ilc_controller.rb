@@ -1,2 +1,0 @@
-class ProductsIlcController < ApplicationController
-end

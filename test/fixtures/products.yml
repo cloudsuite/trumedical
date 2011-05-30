@@ -1,33 +1,43 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  tms_part_number: MyString
-  category: 
-  title: MyString
-  description: MyString
-  features: MyString
-  options: MyString
-  retail_price: 9.99
-  web_price: 9.99
+  id: 1
+  category_id: 1
+  netsuite_id: MyString
+  tms_part_no: MyString
   image_url: MyString
-  vendor: MyString
-  vendor_sku: MyString
-  sammons_category: MyString
-  sammons_part_number: MyString
-  sold_in_units: MyString
+  sammons_part_no: MyString
+  sammons_match: MyString
+  description: MyString
+  header: MyString
+  long_description: MyString
+  sale_units: MyString
+  category_l1: MyString
+  category_l2: MyString
+  category_l3: MyString
+  ship_via: MyString
+  cost: 9.99
+  price_web: 9.99
+  price_clinic: 9.99
+  price_trueblue: 9.99
 
 two:
-  tms_part_number: MyString
-  category: 
-  title: MyString
-  description: MyString
-  features: MyString
-  options: MyString
-  retail_price: 9.99
-  web_price: 9.99
+  id: 1
+  category_id: 1
+  netsuite_id: MyString
+  tms_part_no: MyString
   image_url: MyString
-  vendor: MyString
-  vendor_sku: MyString
-  sammons_category: MyString
-  sammons_part_number: MyString
-  sold_in_units: MyString
+  sammons_part_no: MyString
+  sammons_match: MyString
+  description: MyString
+  header: MyString
+  long_description: MyString
+  sale_units: MyString
+  category_l1: MyString
+  category_l2: MyString
+  category_l3: MyString
+  ship_via: MyString
+  cost: 9.99
+  price_web: 9.99
+  price_clinic: 9.99
+  price_trueblue: 9.99

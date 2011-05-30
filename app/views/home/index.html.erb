@@ -108,23 +108,6 @@
 					-moz-border-radius: 2px;
 					-webkit-border-radius: 2px;
 				}
-			
-			div#shopNowTop{
-				position:absolute;
-				top:10px;
-				right:40px;
-				min-height:100px;
-				width:120px;
-				background-color:#FFFF99; /* TruMedical blue:#0094DE */
-				border-radius: 4px;
-				-moz-border-radius: 4px;
-				-webkit-border-radius: 4px;
-				
-				box-shadow: 5px 5px 5px gray;
-				-moz-box-shadow: 5px 5px 5px gray;
-				-webkit-box-shadow: 5px 5px 5px gray;
-				}
-				#shopNowTop p {font-size:20px; color:gray; font-weight: bold; padding: 30px 10px 30px 30px }
 
 			div#shopNow{
 				display:none;
@@ -193,12 +176,12 @@
 		A replacement button is now above the widget.  Oddly, it is in the
 		layout file for the home page, home.html.erb, while the css for styling
 		it (class showNowTop ) is still in this file. Put them in one place or
-		the other.
+		the other.[[ DONE: moved css for shopNowTop to home.html.erb]]
 	-->
 
 	<div id="banner">
 		<div id="shopNow">
-			<p>Shop Now!</p>
+			<p><%= link_to "Shop Now!", { :controller => 'products', :action => 'shop' }   %></p>
 		</div>
 	</div>
 

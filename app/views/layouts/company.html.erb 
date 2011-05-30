@@ -107,7 +107,8 @@
 		<!-- <div id="content"> -->
 			<!-- header ————————————————————————————————————————————————————————————————— -->
 			<div id="header">
-				<div id="logoMark"><%= image_tag("/images/header/logoMark_412x100.png") %></div>			
+			<%= link_to image_tag("/images/header/logoMark_400x100.jpg"), root_path %>
+	
 			</div> <!-- end 'header' -->                 
 			<!-- middleBand  ————————————————————————————————————————————————————————————— -->
 			<div id="middeBand">

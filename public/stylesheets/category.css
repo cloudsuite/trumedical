@@ -1,0 +1,86 @@
+@charset "UTF-8";
+			/* CSS Document */
+					
+			/* ————— page layout: major divs —————————————————————————————————— */	
+   			 
+            body {}
+				#wrapper_outer {}
+				#wrapper_inner {}
+            #header {}
+				#main { position:relative;
+					background: #EBEBEB;
+					}	
+					#left { position: relative;
+						min-height:542px;
+						width:265px;	/* rather than 265px with no padding */
+						float:left;
+					}
+					#center-right { position: relative;
+						min-height:542px;
+						width:530px;
+						float:left;
+						background-color:transparent; /* so gradient on #main will show through */
+						z-index:11;
+					}
+					
+            #promo {}
+            #footer {}
+
+			/* ———— within leftNav  ——————————————————————————————————————— */	
+				.selected { color:black!important;} /* replace with dashed underline */
+				
+			/* ———— within header  ———————————————————————————————————————— */
+					
+			/* ———— within 'main'  ———————————————————————————————————————— */
+				
+				/* ———— within 'main/left'  ————————————————————————————— */
+            
+            /* ———— within 'main/center_right'  ———————————————————————————— */
+				
+					<!-- Styles for my specific scrolling content -->
+					<style type="text/css">
+						#makeMeScrollable{
+							width: 530px; /* 265 x 2 = 530 */
+							height: 542px;
+							position: relative;
+						}
+
+						#makeMeScrollable div.scrollableArea * {
+							position: relative;
+							float: left;
+							margin: 0;
+							padding: 0;
+						}
+						.scrollableImage { 
+							position:relative; 
+							height:502px; /* 502+20px margin top and bottom = 542px (the height of the 3-panel box) */
+							width:265px; 
+						}
+						.scrollableImageInnerBox {
+							position:absolute;
+							top:0; left:20px;
+							width:245px;
+							background: -moz-linear-gradient(left, #999999 0%, #EBEBEB 65%); /* firefox */
+							background: -webkit-gradient(linear, left top, right top, color-stop(0%,#999999), color-stop(75%,#EBEBEB)); /* webkit */
+							filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EBEBEB', endColorstr='#FFFFFF',GradientType=1 ); /* ie */
+						}
+
+						.scrollableImageInnerBox img { } /* image: 225x460  (225 wide, 460 high). 460px height leaves 40px for productName below image */
+					
+						.scrollableImageInnerBox div.productName { position:absolute;
+							bottom:0;
+							left:0;
+							width:245px;
+							height:40px;
+							background-color:gray;
+							text-align:center; color:white; font-size:12px; line-height:40px; margin-left:20px; 
+							}
+					
+					</style>
+            		
+			/* ———— within 'promo'  —————————————————————————————————————————————————————————————————— */
+			
+				
+			
+			/* ————  within footer———————————————————————————————————————————*/			
+			

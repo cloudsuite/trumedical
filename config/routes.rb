@@ -1,38 +1,43 @@
 Tmror::Application.routes.draw do
  
+  get "products/shop"
+
   get "clinicians/show"
   get "patients/show"
   get "payors/show"
-  get "products/show"
+  
+  get "products_ilc_page/show"
+  get "products_llc_page/show"
+  get "product_page/show"
   
   get "site/sitemap"
+  
+  get "products_llc_page/accessories"
+  get "products_llc_page/combination"
+  get "products_llc_page/diathermy"
+  get "products_llc_page/electrodes"
+  get "products_llc_page/iontophoresis"
+  get "products_llc_page/lotions"
+  get "products_llc_page/stim"
+  get "products_llc_page/ultrasound"
+
+  
+  
 
   resources :users
-
-  resources :products
 
   resources :categories
 
   get "company/about"
-
   get "company/contact"
-
   get "company/faqs"
-  
   get "company/news"
-
   get "company/shipping"
-
   get "company/returns"
-
   get "company/privacy"
-
   get "company/terms"
-
   get "company/services"
-  
   get "company/downloads"
-  
   get "home/index"
   
   root :to => "home#index", :as => "index"

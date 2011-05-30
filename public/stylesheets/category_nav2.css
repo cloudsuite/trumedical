@@ -4,7 +4,7 @@
 	/* #wrap {position:relative; height:200px; width:110px; z-index:100;} */
 	#nav {
 		position:absolute; 
-		left:20px; top:60px;  /* This overrides left:0 from leftNav.css */;
+		left:00px; top:00px;  /* This overrides left:0 from leftNav.css */;
 		list-style:none;
 		}
 	#nav ul {padding:0; margin:0; list-style:none; font-family:arial, sans-serif; font-weight:medium;}

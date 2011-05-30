@@ -20,9 +20,10 @@
 
 	-->
 
-  <title>VMS</title>
+  <title>Tru-Medical Solutions</title>
 	<%= stylesheet_link_tag "custom-theme/jquery-ui-1.8.10.custom.css" %>
 	<%= stylesheet_link_tag "tm1_base.css" %>
+
 
 	
 	<%= yield :controller_specific_css_files %>
@@ -97,7 +98,27 @@
 		});	
 	</script>
 	
-	<%=  yield :controller_specific_jQuery_document_ready %>  
+	<%=  yield :controller_specific_jQuery_document_ready %> 
+	
+	<style type="text/css">
+		div#shopNowTop{
+			position:absolute;
+			top:10px;
+			right:40px;
+			min-height:100px;
+			width:120px;
+			background-color:orange; /* TruMedical blue:#0094DE */
+			border-radius: 4px;
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+		
+			box-shadow: 5px 5px 5px gray;
+			-moz-box-shadow: 5px 5px 5px gray;
+			-webkit-box-shadow: 5px 5px 5px gray;
+			}
+			#shopNowTop p {font-size:20px; color:white; font-weight: bold; padding: 30px 10px 30px 30px; text-decoration:none; } 
+			a:visited {text-decoration:none;}
+	</style>
 	
 	<%=  yield :page_specific_style_declarations %> 
 
@@ -110,11 +131,12 @@
 				<div id="logoMark">
 					<%= link_to image_tag("/images/header/logoMark_400x100.jpg"), :controller => 'home', :action => 'index' %>
 				</div>
-				<a href="#url">
+				<a href="http://localhost:3000/products/shop.html">
 				<div id="shopNowTop">
 					<p>Shop Now!</p>
 				</div>
 				</a>
+				
 
 			</div> <!-- end 'header' -->                 
 			<!-- middleBand  ————————————————————————————————————————————————————————————— -->

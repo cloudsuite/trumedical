@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110519183726) do
+ActiveRecord::Schema.define(:version => 20110527211618) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -24,20 +24,24 @@ ActiveRecord::Schema.define(:version => 20110519183726) do
   end
 
   create_table "products", :force => true do |t|
-    t.string   "tms_part_number"
     t.integer  "category_id"
-    t.string   "title"
-    t.string   "description"
-    t.string   "features"
-    t.string   "options"
-    t.decimal  "retail_price"
-    t.decimal  "web_price"
+    t.string   "netsuite_id"
+    t.string   "tms_part_no"
     t.string   "image_url"
-    t.string   "vendor"
-    t.string   "vendor_sku"
-    t.string   "sammons_category"
-    t.string   "sammons_part_number"
-    t.string   "sold_in_units"
+    t.string   "sammons_part_no"
+    t.string   "sammons_match"
+    t.string   "description"
+    t.string   "header"
+    t.string   "long_description"
+    t.string   "sale_units"
+    t.string   "category_l1"
+    t.string   "category_l2"
+    t.string   "category_l3"
+    t.string   "ship_via"
+    t.decimal  "cost"
+    t.decimal  "price_web"
+    t.decimal  "price_clinic"
+    t.decimal  "price_trueblue"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

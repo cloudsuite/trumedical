@@ -46,10 +46,10 @@
 			Errors:
 						1.Find in controller is returning more than just ultrasound
 						2.Make controller/show action retrieve the right products rather than 
-						hardwiring it
-						3.Css for Add-to-Cart Button — hijack from vsm [DONE]
+						hardwiring it — [DONE?] Seems to work if use product#display and add custom member route to routes.rb, but not if use the built-in CRUD action product#show. 
+						3.CSS for Add-to-Cart Button — hijack from vsm [DONE]
 						4.Missing background for column title fields — see vsm [DONE]
-						5.Add-to-Cart button is dropping down in its field: why?
+						5.Add-to-Cart button is dropping down in its field: why? [FIXED: top-margin:20px]
 -->
 
 <!-- header includes  ————————————————————————————————————————————————————  -->
@@ -159,7 +159,7 @@
 						<!-- <td style="padding-top:5px;"><Q= p.manufacturer  %><br/><br/><Q= p.manufacturers_part_number %></td> -->
 						<td style= "padding-top:5px;text-align:right!important;"><%= p.sale_units %></td>
 						<td style= "padding-top:5px;text-align:right!important;"><%= number_to_currency(p.price_clinic) %></td>
-						<td valign='top'><%= link_to( image_tag('products/icon_3.jpg'), {:controller => 'product', :action => 'show'}) %></td>
+						<td valign='top'><%= link_to( image_tag('products/icon_3.jpg'), display_product_path(p.id) ) %></td>
 						<!-- <td valign="top"><a href="javascript:gotoItem('<Q= p.id %>')"><img src="../images/products/icon_3.jpg"></a></td> -->
 						<td valign="top"><button id="add_to_cart_button" class="disabled">Add-to-Cart</button></td>
 					</tr>

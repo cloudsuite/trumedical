@@ -19,9 +19,12 @@ Tmror::Application.routes.draw do
   get "products_llc_page/stim"
   get "products_llc_page/ultrasound"
 
-  get "product/show"
+  match "product/:id" => "product#show"
   
-  
+  resources :product do  # can handle URLs of the form localhost:3000/product/23
+                         # and/or localhost:3000/product/23/show ?
+    get :display, :on => :member
+  end
 
   resources :users
 

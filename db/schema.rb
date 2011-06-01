@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110601202738) do
+ActiveRecord::Schema.define(:version => 20110601205113) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(:version => 20110601202738) do
     t.string   "sammons_match"
     t.string   "description"
     t.string   "header"
-    t.string   "long_description"
     t.string   "sale_units"
     t.string   "category_l1"
     t.string   "category_l2"

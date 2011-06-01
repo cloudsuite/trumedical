@@ -6,14 +6,14 @@
 			<ul>
 				<li class="p2 down">Clinical Electrotherapy
 					<ul>
-						<li>Accessories</li>
-						<li>Combination</li>
-						<li>Diathermy</li>
-						<li>Electrodes</li>
-						<li>Iontophoresis</li>
-						<li>Lotions & Gels</li>
-						<li>Stim</li>
-						<li><%= link_to "Ultrasound", { :controller => 'products_llc_page', :action => 'ultrasound' } %></li>
+						<li>Accessories</li> 		<!-- 3 -->
+						<li>Combination</li>		<!-- 4 -->
+						<li>Diathermy</li>			<!-- missing from database -->
+						<li>Electrodes</li>			<!-- 5 -->
+						<li>Iontophoresis</li>	<!-- 6 -->	
+						<li>Lotions & Gels</li>	<!-- 7 -->
+						<li>Stim</li>						<!-- 8 -->
+						<li><%= link_to "Ultrasound", display_products_llc_page_path(9) %></li>
 					</ul>
 				</li>
 				<li class="p2 down">Continuous Passive Motion

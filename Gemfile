@@ -5,6 +5,8 @@ gem 'rails', '3.0.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+# Use sqlite3 as the DBMS (during development) 
+
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 
@@ -21,6 +23,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # Bundle the extra gems:
 
 gem 'will_paginate', '~> 2.3.15'
+gem 'jquery-rails', '>= 1.0.3'
+
 
 # gem 'bj'
 # gem 'nokogiri'

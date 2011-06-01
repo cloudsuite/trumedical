@@ -1,0 +1,165 @@
+<!--  —————————————————————————————————————————————————————————————————————
+			Controller: Product
+			Action:     display (for sale) 
+
+			——————————————————————————————————————————————————————————————————————
+
+			To Do:
+				1. Page header needs:  view cart / checkout, register/login
+					Otherwise no way of actually buying the product.
+				2. Add left-nav to this page — with 40px buffer to the left so it can't jamb right up against left of window. 
+				3. Add ability to add more than one to cart
+				4. Stuff to deal with clinician seeing his special pricing on this page? 
+			Bugs:
+				1. TM on product title is formatting as AE
+				2. pictures jammed too close to right margin in box?  make them a bit smaller (or at least narrower?). [ Fixed ] by squeezing picture down to 250x250px
+				3. What is gray bar to the right of table? background-color of <?> showing?  
+				4. Unclear why had to go to Product#display, rather than using Product#show
+-->
+
+<!-- header includes  ————————————————————————————————————————————————————  -->
+
+<% content_for (:controller_specific_css_files) do %>
+	<%= stylesheet_link_tag "leftNav.css" %>
+	<%= stylesheet_link_tag "category.css" %>
+
+<% end %>
+
+<% content_for (:controller_specific_js_files) do %>
+	<%= javascript_include_tag "jquery.leftNav.js" %>	
+<% end %>
+
+<% content_for (:controller_specific_jQuery_document_ready ) do %>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+		});	
+	</script>
+	
+<% end %> 
+
+<% content_for (:page_specific_style_declarations) do %> 
+	<style type="text/css">
+		
+		#left {}
+		#left #product_image {
+			overflow:none;
+			height:270px;
+			width:262px; /* DEBUG: from 266 to make border on right of image appear */;
+			border: solid thin gray;
+			background-color:white;
+		}
+		#center_right_content h1 {color:orange;} /* or tru medical blue? #0094DE */
+		div#table_of_products {position:relative; width:80%px; background-color:; padding:25px 00px 10px 0px;}
+		th {background-color:#AAAAAA; color:white;font-weight:500; margin-bottom:11px; height:24px; padding:5px;}
+		td { color: gray; font-size:12px;}
+		td.attribute_name { color: teal;}
+		td.attribute_value { }
+		td.test { color:red;}
+		
+		button#add_to_cart_button{ 
+				width:85px;
+				padding:4px 2px 4px 2px;
+				font-size:11px;
+				font-weight:bold;
+				line-height: 15px;
+				margin-top:20px;
+				margin-left:0px;
+				text-align:center;
+				font-family: inherit;
+				color: white;
+			
+				background-color: orange; 
+				border:none;
+				border-radius: 2px;
+				-moz-border-radius: 2px;
+				-webkit-border-radius: 2px;
+			}
+		
+	</style>
+<% end %>	
+
+
+<!-- leftNav ———————————————————————————————————————————————————————————————— -->
+	
+<% content_for (:leftNav) do %>
+	<!-- 
+		render :partial => 'shared/leftnav' include left nav from a partial template since it is the same in category and item templates
+	-->
+<% end %> 
+   
+   
+<!-- #main   ———————————————————————————————————————————————————————————————— -->
+   
+<% content_for (:main) do %>  
+   
+	<!-- left  ——————————————————————————————————————————————————————— -->
+	  
+	<div id="left">
+		<div id="product_image">
+			<%= image_tag("products/modalities/electrotherapy/ultrasound/dynatron125_260x260.jpg", :size => "250x250") %>
+		</div>
+	<!-- or, from vms: 
+		<div id="product_picture">
+			<img src=<Q "/images/products/lighting/ballasts/compact_fluorescent_ballasts/"+ @product.image_filename Q> width="260" height="260">
+		</div>
+	--> 
+ 	</div>
+         
+  <!-- centerRight  ————————————————————————————————————————————————————— -->
+     
+  <div id="center_right" style="z-index:7;">
+		
+		<div id="center_right_content">
+			<h1><%= sanitize(@product.header) %></h1>
+
+			<div id="product_table">
+				<table cellspacing=10>
+					<col/>
+					<col/>
+					<tr>
+						<td class="test">[Debug] Object-id:</td>
+						<td class="test"><%= @product.id %></td>
+					</tr>
+					<tr>
+						<td class="attribute_name">TMS Part No:</td>
+						<td class="attribute_value"><%= @product.tms_part_no %></td>
+					</tr>
+					<tr>
+						<td class="attribute_name">Sammons Part No:</td>
+						<td class="attribute_value"><%= @product.sammons_part_no %></td>
+					</tr>
+					<tr>
+						<td class="attribute_name">Description:</td>
+						<td class="attribute_value"><%= @product.description %></td>
+					</tr>
+					<tr>
+						<td class="attribute_name">Sold by:</td>
+						<td class="attribute_value"><%= @product.sale_units %></td>
+					</tr>
+					<tr>
+						<td class="attribute_name">Price</td>
+						<td class="attribute_value"><%= number_to_currency(@product.price_clinic) %></td>
+					</tr>
+					<tr>
+						<td class="attribute_name">Ships via:</td>
+						<td class="attribute_value"><%= @product.ship_via %></td>
+					</tr>
+					<tr>
+						<td style="margin-top:20px;">&nbsp;</td>
+						<td style="text-align:left; margin-left:-2px;"><button id="add_to_cart_button">Add-to-Cart</button></td>
+					</tr>
+				</table>
+
+
+			</div><!-- end div 'table of products' -->
+			
+
+
+		</div> <!-- end div 'center_right_content' -->
+  </div> <!-- end div 'center_right' -->
+ 
+
+
+<% end %>

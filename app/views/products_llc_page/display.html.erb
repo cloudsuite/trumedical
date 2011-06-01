@@ -1,0 +1,175 @@
+<!--  —————————————————————————————————————————————————————————————————————
+			Controller: products_llc_page  (replace with category_leaf)
+			Action:     display
+
+			——————————————————————————————————————————————————————————————————————
+			ToDo:
+						0.keep track of changes made to this file, so can back-map them to 
+						products_11c_page#show and/or display
+							line 90: add-to-cart-button margin-top:5 (vs 20)
+							line 150: reference to product image
+							line 157: link from icon in table to page for associated product
+							line 158: number_to_currency for showing price 
+							line 160: remove padding-top on add-to-cart button in td
+						1	Insert cart / checkout to header: see vms_base.css for styles
+						2.Add quantity-ordered field to each row
+						3.Get images working [ partially Done: using same image for all ultrasound products ]
+						4.Remove the hardwired 'ultrasound' leaf level category title
+						7 Insert pagination. [DONE]
+							—See vms/ f.html.erb for addition to page [DONE]
+							—place it on the model class Products_llc_page_controller [DONE]
+							—install gem; run bundle install [DONE]
+						8.Find an image background color that works with the TruMedical blue in the header
+						9.Assemble image references 
+						10. Remove scrollable from jQuery document ready, and javascript includes
+						11. Format the price field: see BUFFROR collections#display
+						12. post-pend p.image_url onto variable passed to image_tag, rather than current hard-wired reference to a specific image in /products/modalities/electrotherapy/ultrasound
+						
+						——————— after seeing initial version: —————————————————————————
+						1. left nav:  higher [DONE]
+						2. left nav:  link leaf level entries to specific named
+						actions within products_llc_page#ulltrasound
+						3. left nav: replace these with links to the #show operation defined on products_llc_page passing the specific leaf-level category that we want to go to as an argument.  Show should find all of the products in that ll_category; and pass them to to generic #show action through @products
+						4. try replacing color block with photo with block text running over it [DONE]
+						5. replace fill of header cells in the table of products with something subtler: bottom border? 
+						6. why is add-to-cart going to bottom of the cell rather than the top?
+						7. get some sample pictures working: at least for the  three clinical ultrasound products in the database
+						8. Why is it showing all products, not just ultrasound; find not working; 
+						9. If left-nav expands below 542 box, have it push the footer down — same issue in AAO
+						10. define a route /ultrasound that gets Bill there
+						11. Figure out how to have items in left-nav open when go to a LLC page.
+						12. Figure out how to use HTML5 text to overlay vertical text in Impact font? vs composing one image for each of the leaf-level categories?
+						13. make table wider — use more of the 800px available
+						
+			Errors:
+						1.Find in controller is returning more than just ultrasound
+						2.Make controller/show action retrieve the right products rather than 
+						hardwiring it — [DONE?] Seems to work if use product#display and add custom member route to routes.rb, but not if use the built-in CRUD action product#show. 
+						3.CSS for Add-to-Cart Button — hijack from vsm [DONE]
+						4.Missing background for column title fields — see vsm [DONE]
+						5.Add-to-Cart button is dropping down in its field: why? [FIXED: top-margin:20px]
+-->
+
+<!-- header includes  ————————————————————————————————————————————————————  -->
+
+<% content_for (:controller_specific_css_files) do %>
+	<%= stylesheet_link_tag "leftNav.css" %>
+<% end %>
+
+<% content_for (:controller_specific_js_files) do %>
+	<%= javascript_include_tag "jquery.leftNav.js" %>
+<% end %>
+
+<% content_for (:controller_specific_jQuery_document_ready ) do %>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+		});	
+		function gotoItem(id){
+			location.href="/products/display?id="+id;
+		}
+	</script>
+	
+<% end %> 
+
+<% content_for (:page_specific_style_declarations) do %> 
+	<style type="text/css">
+		#center_right_content h1 {color:#DC8758;}
+		div#table_of_products {position:relative; width:100%; background-color:white; padding:0px 0px 10px 0px; margin-top:-20px;}
+		th {background-color:#AAAAAA; color:white;font-weight:500; margin-bottom:10px; height:24px; padding:5px;}
+		td { color: gray; font-size:10px;}
+		#center_right_content h1 {color:#DC8758;}
+		button#add_to_cart_button { 
+				width:85px;
+				padding:4px 2px 4px 2px;
+				font-size:11px;
+				font-weight:bold;
+				line-height:15px;
+				margin-top:4px; /* Used on Product page, but not here: would push button down in cell */;
+				margin-left:0px;
+				text-align:center;
+				font-family:inherit;
+				color:white;
+				background-color:orange; 
+				border:none;
+				border-radius: 2px;
+				-moz-border-radius: 2px;
+				-webkit-border-radius: 2px;
+			}
+	</style>
+<% end %>	
+
+
+<!-- leftNav ———————————————————————————————————————————————————————————————— -->
+	
+<% content_for (:leftNav) do %>
+
+		<%= render :partial => 'shared/leftnav' %> 
+		
+		<!-- include left nav from a partial template since it is the same in [top/intermediate/]leaf-level category page templates and in the product page templates. The brackets are here because the initial release of the Tru-Medical site may not have top or intermediate level category landing pages.-->
+
+<% end %> 
+   
+   
+<!-- #main   ———————————————————————————————————————————————————————————————— -->
+   
+<% content_for (:main) do %>  
+   
+	<!-- left  ——————————————————————————————————————————————————————— -->
+	  
+	<div id="left">
+		<%= image_tag "products/modalities/electrotherapy/ultrasound/category_1.jpg" %>
+ 	</div>
+         
+  <!-- centerRight  ————————————————————————————————————————————————————— -->
+     
+  <div id="center_right" style="z-index:7;">
+		
+		<div id="center_right_content">
+			<!-- <h1>Ultrasound</h1> -->
+			<div id="table_of_products">
+				<table cellspacing=10 >
+					<tr>
+						<col width="100px"></col> <!-- col attributes having no effect. Why? -->
+						<col width="200"> </col>
+						<col align="left"> </col> 
+						<col align="left"> </col>
+						<col align="left"> </col>
+						<col style="text-align:right;"></col>
+						<col style= "text-align:right!important;"></col>
+						<col/>
+						<th>Photo</th>
+						<th style="width:60px;">TMS Part No</th>
+						<th>Description</th>
+						<!-- <th>Brand/Model</th> -->
+						<th>Ship Qty</th>
+						<th>Price</th>
+						<th style="background-color:white; border:solid thin silver">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th style="background-color:white; border: solid thin orange;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+					<tr>
+					
+					<% @products.each do |p| %>
+					<tr>
+						<td><%= image_tag("products/modalities/electrotherapy/ultrasound/dynatron125_260x260.jpg", :size => "50x50") %></td>
+						<td style="padding-top:5px;"><%= p.tms_part_no %></td>
+						<td style="padding-top:5px;"><%= p.description   %></td>
+						<!-- <td style="padding-top:5px;"><Q= p.manufacturer  %><br/><br/><Q= p.manufacturers_part_number %></td> -->
+						<td style= "padding-top:5px;text-align:right!important;"><%= p.sale_units %></td>
+						<td style= "padding-top:5px;text-align:right!important;"><%= number_to_currency(p.price_clinic) %></td>
+						<td valign='top'><%= link_to( image_tag('products/icon_3.jpg'), display_product_path(p.id) ) %></td>
+						<!-- <td valign="top"><a href="javascript:gotoItem('<Q= p.id %>')"><img src="../images/products/icon_3.jpg"></a></td> -->
+						<td valign="top"><button id="add_to_cart_button" class="disabled">Add-to-Cart</button></td>
+					</tr>
+					<% end %>
+
+				</table>
+
+			<p><%= will_paginate @products %></p>
+			
+		</div> <!-- end div 'center_right_content' -->
+  </div><!-- end div 'center_right' -->
+ 
+
+
+<% end %>

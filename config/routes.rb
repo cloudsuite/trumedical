@@ -21,10 +21,24 @@ Tmror::Application.routes.draw do
 
   match "product/:id" => "product#show"
   
-  resources :product do  # can handle URLs of the form localhost:3000/product/23
-                         # and/or localhost:3000/product/23/show ?
+  resources :product do  # can handle URLs of the form localhost:3000/product/23 [, and/or localhost:3000/product/23/show ? ]
     get :display, :on => :member
   end
+  resources :products_llc_page do  # can handle URLs of the form localhost:3000/products_llc_page/4 
+     # Is this what I want, or do I want an operation on the collection: one which does a Find.where(category_name=arg)? 
+     # and then calls a generic view passing the returned category to the view through the instance variable @category?.
+     # It seems like the member route would work if I knew the id of each leaf-level category in the system and 
+     # hardwired the _leftNav partial to use them.  Maybe OK as a start.  — and might work if I was dynamically 
+     # building the left nav from category tree in the database, and caching it until that category tree changed. 
+     # The alternative is to pass a category name as an argument, and do search for the sought category in the controller
+     # using that string-valued argument, and then pass the retrieved category through @category, after that point
+     # using its Rails object id, rather than the category name. Since the searchk could be for categories where 
+     # L2 name = arg1 and LLC name = arg2, that would avoid the problem of having non-unique leaf level category names. 
+     #
+     # Try it: build a table of categories; load it into the database;
+     #
+     get :display, :on => :member
+   end
 
   resources :users
 
